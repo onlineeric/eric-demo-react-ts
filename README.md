@@ -40,8 +40,7 @@ In my demo project, available on [my Github page](https://github.com/onlineeric)
 
 ## Demo Site
 
-You can view a live demo of a project built using this template at my [Demo Site](https://proud-ground-0f99e0a00.5.azurestaticapps.net/)
+You can view a live demo of a project built using this template at my [Eric Demo Site](https://agreeable-water-061d90800.5.azurestaticapps.net)
 
 Here's a screenshot of the demo site:
-
-![Demo Site Screenshot]()
+![Demo Site Screenshot](public/Eric%20Demo%20Site%20-%20screenshot.png)
