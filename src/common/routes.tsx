@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
 import { logOff } from '../store/loginSlice';
 import SignIn from '../login/SignIn';
+import Home from '../home/Home';
 
 // Logoff component
 const Logoff = () => {
@@ -17,7 +18,8 @@ const Logoff = () => {
 };
 
 export const authRoutes = [
-	{ path: '/home', element: <Dashboard />, title: 'Dashboard Home' },
+	{ path: '/home', element: <Home />, title: 'Home' },
+	{ path: '/dashboard', element: <Dashboard />, title: 'Dashboard' },
 	{ path: '/orders', element: <Orders />, title: 'Orders' },
 	{ path: '/status', element: <div>status page</div>, title: 'Status' },
 	{ path: '/logoff', element: <Logoff />, title: 'Login' },
