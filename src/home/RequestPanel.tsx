@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Paper } from '@mui/material';
+import { Input, Paper, Typography } from '@mui/material';
+import Title from '../common/Title';
 
 export default function RequestPanel() {
 	// get env var
@@ -15,7 +16,12 @@ export default function RequestPanel() {
 				height: 240,
 			}}
 		>
-			request panel
+			<Title>Request submit to server</Title>
+			<Typography variant="h6">Minimal API server:</Typography>
+			<div style={{ display: 'flex', alignItems: 'center' }}>
+				<Typography variant="subtitle1">Execute times:</Typography>
+				<Input type="number" defaultValue={500} sx={{ width: '100px', ml: 2 }} />
+			</div>
 		</Paper>
 	);
 }
