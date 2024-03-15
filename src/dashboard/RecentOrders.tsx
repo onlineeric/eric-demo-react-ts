@@ -5,7 +5,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Title from './Title';
+import Title from '../common/Title';
 
 // Generate Order Data
 function createData(id: number, date: string, name: string, shipTo: string, paymentMethod: string, amount: number) {
