@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Button, Input, Paper, Typography } from '@mui/material';
 import Title from '../common/Title';
+import AxiosLib from '../utils/AxiosLib';
 
 export default function RequestPanel() {
 	// get env var
-	const API_URL_eric_gin_server = process.env.REACT_APP_API_URL_eric_gin_server;
-	console.log('API_URL_eric_gin_server:', API_URL_eric_gin_server);
-
 	const [executeTimes, setExecuteTimes] = React.useState(500);
 
-	const callAPIs = () => {
+	const callAPIs = async () => {
 		console.log('callAPIs', executeTimes);
+		const res = await AxiosLib.getSha256Benchmark(executeTimes);
+		console.log('res:', res);
 	};
 
 	return (
