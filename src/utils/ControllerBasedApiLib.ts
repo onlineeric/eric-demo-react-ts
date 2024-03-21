@@ -1,8 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
-class AxiosLib {
+class ControllerBasedApiLib {
 	private controllerBasedApi: AxiosInstance;
-	private minimalApi: AxiosInstance;
 
 	constructor() {
 		this.controllerBasedApi = axios.create({
@@ -10,14 +9,6 @@ class AxiosLib {
 			auth: {
 				username: process.env.REACT_APP_AUTH_USERNAME_ericcontrollerbasedapi ?? '',
 				password: process.env.REACT_APP_AUTH_PASSWORD_ericcontrollerbasedapi ?? '',
-			},
-		});
-
-		this.minimalApi = axios.create({
-			baseURL: process.env.REACT_APP_API_URL_ericminimalapi,
-			auth: {
-				username: process.env.REACT_APP_AUTH_USERNAME_ericminimalapi ?? '',
-				password: process.env.REACT_APP_AUTH_PASSWORD_ericminimalapi ?? '',
 			},
 		});
 	}
@@ -35,4 +26,4 @@ class AxiosLib {
 	// Add more methods for other API endpoints
 }
 
-export default new AxiosLib();
+export default new ControllerBasedApiLib();

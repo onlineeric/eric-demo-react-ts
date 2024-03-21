@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Input, Paper, Typography } from '@mui/material';
 import Title from '../common/Title';
-import AxiosLib from '../utils/AxiosLib';
+import ControllerBasedApiLib from '../utils/ControllerBasedApiLib';
 
 export default function RequestPanel() {
 	// get env var
@@ -9,7 +9,7 @@ export default function RequestPanel() {
 
 	const callAPIs = async () => {
 		console.log('callAPIs', executeTimes);
-		const res = await AxiosLib.getSha256Benchmark(executeTimes);
+		const res = await ControllerBasedApiLib.getSha256Benchmark(executeTimes);
 		console.log('res:', res);
 	};
 
