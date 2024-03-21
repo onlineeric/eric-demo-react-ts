@@ -5,16 +5,20 @@ class AxiosLib {
 	private minimalApi: AxiosInstance;
 
 	constructor() {
-		console.log(
-			'process.env.REACT_APP_API_URL_ericcontrollerbasedapi:',
-			process.env.REACT_APP_API_URL_ericcontrollerbasedapi,
-		);
-		console.log('process.env.REACT_APP_API_URL_ericminimalapi:', process.env.REACT_APP_API_URL_ericminimalapi);
 		this.controllerBasedApi = axios.create({
 			baseURL: process.env.REACT_APP_API_URL_ericcontrollerbasedapi,
+			auth: {
+				username: process.env.REACT_APP_AUTH_USERNAME_ericcontrollerbasedapi ?? '',
+				password: process.env.REACT_APP_AUTH_PASSWORD_ericcontrollerbasedapi ?? '',
+			},
 		});
+
 		this.minimalApi = axios.create({
 			baseURL: process.env.REACT_APP_API_URL_ericminimalapi,
+			auth: {
+				username: process.env.REACT_APP_AUTH_USERNAME_ericminimalapi ?? '',
+				password: process.env.REACT_APP_AUTH_PASSWORD_ericminimalapi ?? '',
+			},
 		});
 	}
 
