@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Grid, Paper } from '@mui/material';
 import RequestPanel from './RequestPanel';
+import ResponsePanel from './ResponsePanel';
 
 export default function Home() {
 	return (
@@ -11,16 +12,7 @@ export default function Home() {
 			</Grid>
 			{/* Response Panel */}
 			<Grid item xs={12} md={7} xl={8}>
-				<Paper
-					sx={{
-						p: 2,
-						display: 'flex',
-						flexDirection: 'column',
-						height: 250,
-					}}
-				>
-					response panel
-				</Paper>
+				<ResponsePanel />
 			</Grid>
 			{/* result chat */}
 			<Grid item xs={12}>
