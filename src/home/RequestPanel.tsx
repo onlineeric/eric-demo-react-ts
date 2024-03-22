@@ -1,16 +1,22 @@
 import * as React from 'react';
-import { Button, Input, Paper, Typography } from '@mui/material';
+import { Box, Button, Paper, TextField, Typography } from '@mui/material';
 import Title from '../common/Title';
 import ControllerBasedApiLib from '../utils/ControllerBasedApiLib';
+import MinimalApiLib from '../utils/MinimalApiLib';
 
 export default function RequestPanel() {
 	// get env var
-	const [executeTimes, setExecuteTimes] = React.useState(500);
+	const [executeTimes, setExecuteTimes] = React.useState(100);
 
 	const callAPIs = async () => {
+		if (executeTimes < 1 || executeTimes > 1000) {
+			return;
+		}
 		console.log('callAPIs', executeTimes);
 		const res = await ControllerBasedApiLib.getSha256Benchmark(executeTimes);
-		console.log('res:', res);
+		console.log('controllerbasedApi res:', res);
+		const res2 = await MinimalApiLib.getSha256Benchmark(executeTimes);
+		console.log('minimalApi res:', res2);
 	};
 
 	return (
@@ -19,7 +25,7 @@ export default function RequestPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 240,
+				height: 250,
 			}}
 		>
 			<Title>Request submit to servers</Title>
@@ -29,18 +35,21 @@ export default function RequestPanel() {
 			<div>
 				<hr />
 			</div>
-			<div style={{ display: 'flex', alignItems: 'center' }}>
-				<Typography variant="subtitle1">Execute times:</Typography>
-				<Input
-					type="number"
+			<Box sx={{ display: 'flex', alignItems: 'center', mt: 1, mb: 1 }}>
+				<TextField
+					id="idTextExecTimes"
+					label="Execute times"
+					variant="outlined"
 					value={executeTimes}
-					sx={{ width: '100px', ml: 2 }}
+					type="number"
 					onChange={(e) => setExecuteTimes(parseInt(e.target.value))}
+					error={executeTimes < 1 || executeTimes > 1000}
+					helperText={executeTimes < 1 || executeTimes > 1000 ? '1 ~ 1000' : ''}
 				/>
 				<Button variant="contained" color="primary" sx={{ ml: 2 }} onClick={callAPIs}>
 					Submit
 				</Button>
-			</div>
+			</Box>
 		</Paper>
 	);
 }

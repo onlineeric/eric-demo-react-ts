@@ -16,7 +16,7 @@ export default function Home() {
 						p: 2,
 						display: 'flex',
 						flexDirection: 'column',
-						height: 240,
+						height: 250,
 					}}
 				>
 					response panel
