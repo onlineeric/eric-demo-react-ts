@@ -11,9 +11,9 @@ export default function ResponsePanel() {
 	];
 
 	const rows = [
-		{ id: 1, server: 'Minimal API server (c#)', executionTime: '620', memoryUsed: 32896 },
-		{ id: 2, server: 'Controller based API server (c#)', executionTime: '620', memoryUsed: 32896 },
-		{ id: 3, server: 'Gin API server (Golang)', executionTime: '620', memoryUsed: 32896 },
+		{ id: 1, server: 'Minimal API server (c#)', executionTime: '620', memoryUsed: 32890 },
+		{ id: 2, server: 'Controller based API server (c#)', executionTime: '615', memoryUsed: 32896 },
+		{ id: 3, server: 'Gin API server (Golang)', executionTime: '625', memoryUsed: 32800 },
 	];
 	return (
 		<Paper
