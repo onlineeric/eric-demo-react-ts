@@ -25,14 +25,14 @@ export default function RequestPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 250,
+				height: 300,
 			}}
 		>
 			<Title>Request submit to servers</Title>
 			<Typography variant="subtitle1">Minimal API server (c#):</Typography>
 			<Typography variant="subtitle1">Controller based API server (c#):</Typography>
 			<Typography variant="subtitle1">Gin API server (Golang):</Typography>
-			<div>
+			<div style={{ marginTop: '10px', marginBottom: '10px' }}>
 				<hr />
 			</div>
 			<Box sx={{ display: 'flex', alignItems: 'center', mt: 1, mb: 1 }}>
