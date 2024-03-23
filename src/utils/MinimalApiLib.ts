@@ -23,6 +23,16 @@ class MinimalApiLib {
 		}
 	}
 
+	async getStatus(): Promise<AxiosResponse> {
+		try {
+			const response: AxiosResponse = await this.minimalApi.get(`/status`);
+			return response;
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
+	}
+
 	// Add more methods for other API endpoints
 }
 

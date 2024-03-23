@@ -23,6 +23,16 @@ class ControllerBasedApiLib {
 		}
 	}
 
+	async getStatus(): Promise<AxiosResponse> {
+		try {
+			const response: AxiosResponse = await this.controllerBasedApi.get(`/status`);
+			return response;
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
+	}
+
 	// Add more methods for other API endpoints
 }
 
