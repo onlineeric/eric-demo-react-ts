@@ -5,6 +5,8 @@ import type { RootState } from './store';
 interface ServerResponse {
 	id: string | null;
 	server: string | null;
+	algorithm: string | null;
+	parallelization: boolean | null;
 	executionTime: number | null;
 	memoryUsed: number | null;
 	responsedAt: Date | null;

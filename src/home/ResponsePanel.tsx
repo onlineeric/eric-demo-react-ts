@@ -15,6 +15,7 @@ export default function ResponsePanel() {
 		{ id: 2, server: 'Controller based API server (c#)', executionTime: '615', memoryUsed: 32896 },
 		{ id: 3, server: 'Gin API server (Golang)', executionTime: '625', memoryUsed: 32800 },
 	];
+
 	return (
 		<Paper
 			sx={{
