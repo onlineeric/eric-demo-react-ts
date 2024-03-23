@@ -7,31 +7,30 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 export default function ServerStatusPanel() {
-	const callAPIs = async () => {
-		const res = await ControllerBasedApiLib.getStatus();
-		console.log('controllerbasedApi res:', res);
-		setMinimalApiStatus(res.status);
-		const res2 = await MinimalApiLib.getStatus();
-		console.log('minimalApi res:', res2);
-		setControllerApiStatus(res2.status);
-	};
+	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null>(null);
+	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null>(null);
+	const [ginApiStatus] = React.useState<number | null>(null);
 
 	const TickIcon = styled(CheckCircleIcon)({ color: 'green' });
 	const CrossIcon = styled(CancelIcon)({ color: 'red' });
+
+	const callAPIs = async () => {
+		setControllerApiStatus(null);
+		setMinimalApiStatus(null);
+
+		ControllerBasedApiLib.getStatus().then((res) => setMinimalApiStatus(res.status));
+		MinimalApiLib.getStatus().then((res) => setControllerApiStatus(res.status));
+	};
 
 	const getStatusResult = (status: number | null) => {
 		if (status === null) {
 			return <></>;
 		}
 		if (status === 200) {
-			return <Box sx={{ display: 'flex', alignItems: 'center' }}>Online <TickIcon /></Box>; // eslint-disable-line prettier/prettier
+			return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><TickIcon /> Online</Box>; // eslint-disable-line prettier/prettier
 		}
-		return <Box sx={{ display: 'flex', alignItems: 'center' }}>Offline <CrossIcon /> Http status: {status}</Box>; // eslint-disable-line prettier/prettier
+		return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><CrossIcon /> Offline, Http status: {status}</Box>; // eslint-disable-line prettier/prettier
 	};
-
-	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null>(null);
-	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null>(null);
-	const [ginApiStatus] = React.useState<number | null>(null);
 
 	return (
 		<Paper
@@ -43,9 +42,11 @@ export default function ServerStatusPanel() {
 			}}
 		>
 			<Title>Server status</Title>
-			<Typography variant="body1">Minimal API server (c#): {getStatusResult(minimalApiStatus)}</Typography>
-			<Typography variant="body1">Controller based API server (c#): {getStatusResult(controllerApiStatus)}</Typography>
-			<Typography variant="body1">Gin API server (Golang): {getStatusResult(ginApiStatus)}</Typography>
+			<Box sx={{ display: 'flex', pt: 1, pb: 1 }}>Minimal API server (c#): {getStatusResult(minimalApiStatus)}</Box>
+			<Box sx={{ display: 'flex', pt: 1, pb: 1 }}>
+				Controller based API server (c#): {getStatusResult(controllerApiStatus)}
+			</Box>
+			<Box sx={{ display: 'flex', pt: 1, pb: 1 }}>Gin API server (Golang): {getStatusResult(ginApiStatus)}</Box>
 			<div style={{ marginTop: '10px', marginBottom: '10px' }}>
 				<hr />
 			</div>
