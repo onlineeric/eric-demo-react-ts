@@ -5,11 +5,12 @@ import ControllerBasedApiLib from '../utils/ControllerBasedApiLib';
 import MinimalApiLib from '../utils/MinimalApiLib';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import GinApiLib from '../utils/GinApiLib';
 
 export default function ServerStatusPanel() {
 	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null>(null);
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null>(null);
-	const [ginApiStatus] = React.useState<number | null>(null);
+	const [ginApiStatus, setGinApiStatus] = React.useState<number | null>(null);
 
 	const TickIcon = styled(CheckCircleIcon)({ color: 'green' });
 	const CrossIcon = styled(CancelIcon)({ color: 'red' });
@@ -17,9 +18,11 @@ export default function ServerStatusPanel() {
 	const callAPIs = async () => {
 		setControllerApiStatus(null);
 		setMinimalApiStatus(null);
+		setGinApiStatus(null);
 
 		ControllerBasedApiLib.getStatus().then((res) => setMinimalApiStatus(res.status));
 		MinimalApiLib.getStatus().then((res) => setControllerApiStatus(res.status));
+		GinApiLib.getStatus().then((res) => setGinApiStatus(res.status));
 	};
 
 	const getStatusResult = (status: number | null) => {
