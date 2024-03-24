@@ -14,12 +14,11 @@ const spin = keyframes`
 0% { transform: rotate(360deg); }
 1000% { transform: rotate(0deg); }
 `;
+const TickIcon = styled(CheckCircleIcon)({ color: 'green' });
+const CrossIcon = styled(CancelIcon)({ color: 'red' });
+const LoadingIcon = styled(SyncIcon)({ color: 'yellow', animation: `${spin} 2s linear infinite` });
 
 const getStatusResult = (status: number | null | typeof LOADING_STATUS) => {
-	const TickIcon = styled(CheckCircleIcon)({ color: 'green' });
-	const CrossIcon = styled(CancelIcon)({ color: 'red' });
-	const LoadingIcon = styled(SyncIcon)({ color: 'yellow', animation: `${spin} 2s linear infinite` });
-
 	if (status === null) {
 		return <></>;
 	}
@@ -37,7 +36,7 @@ export default function ServerStatusPanel() {
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 
-	const callAPIs = async () => {
+	const callAPIs = React.useCallback(async () => {
 		setControllerApiStatus(LOADING_STATUS);
 		setMinimalApiStatus(LOADING_STATUS);
 		setGinApiStatus(LOADING_STATUS);
@@ -45,7 +44,7 @@ export default function ServerStatusPanel() {
 		ControllerBasedApiLib.getStatus().then((res) => setMinimalApiStatus(res.status));
 		MinimalApiLib.getStatus().then((res) => setControllerApiStatus(res.status));
 		GinApiLib.getStatus().then((res) => setGinApiStatus(res.status));
-	};
+	}, []);
 
 	return (
 		<Paper
