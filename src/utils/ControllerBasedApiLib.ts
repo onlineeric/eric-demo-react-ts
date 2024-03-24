@@ -4,6 +4,10 @@ class ControllerBasedApiLib {
 	private controllerBasedApi: AxiosInstance;
 
 	constructor() {
+		console.log(
+			'process.env.REACT_APP_API_URL_ericcontrollerbasedapi: ',
+			process.env.REACT_APP_API_URL_ericcontrollerbasedapi,
+		);
 		this.controllerBasedApi = axios.create({
 			baseURL: process.env.REACT_APP_API_URL_ericcontrollerbasedapi,
 			auth: {
