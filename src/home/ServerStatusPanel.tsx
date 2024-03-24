@@ -3,36 +3,48 @@ import { Box, Button, Paper, Typography, styled } from '@mui/material';
 import Title from '../common/Title';
 import ControllerBasedApiLib from '../utils/ControllerBasedApiLib';
 import MinimalApiLib from '../utils/MinimalApiLib';
+import SyncIcon from '@mui/icons-material/Sync';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import GinApiLib from '../utils/GinApiLib';
+import { keyframes } from '@emotion/react';
 
-export default function ServerStatusPanel() {
-	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null>(null);
-	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null>(null);
-	const [ginApiStatus, setGinApiStatus] = React.useState<number | null>(null);
+const LOADING_STATUS = 'loading';
+const spin = keyframes`
+0% { transform: rotate(360deg); }
+1000% { transform: rotate(0deg); }
+`;
 
+const getStatusResult = (status: number | null | typeof LOADING_STATUS) => {
 	const TickIcon = styled(CheckCircleIcon)({ color: 'green' });
 	const CrossIcon = styled(CancelIcon)({ color: 'red' });
+	const LoadingIcon = styled(SyncIcon)({ color: 'yellow', animation: `${spin} 2s linear infinite` });
+
+	if (status === null) {
+		return <></>;
+	}
+	if (status === LOADING_STATUS) {
+		return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><LoadingIcon /> Loading...</Box>; // eslint-disable-line prettier/prettier
+	}
+	if (status === 200) {
+		return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><TickIcon /> Online</Box>; // eslint-disable-line prettier/prettier
+	}
+	return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><CrossIcon /> Offline, Http status: {status}</Box>; // eslint-disable-line prettier/prettier
+};
+
+export default function ServerStatusPanel() {
+	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
+	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
+	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 
 	const callAPIs = async () => {
-		setControllerApiStatus(null);
-		setMinimalApiStatus(null);
-		setGinApiStatus(null);
+		setControllerApiStatus(LOADING_STATUS);
+		setMinimalApiStatus(LOADING_STATUS);
+		setGinApiStatus(LOADING_STATUS);
 
 		ControllerBasedApiLib.getStatus().then((res) => setMinimalApiStatus(res.status));
 		MinimalApiLib.getStatus().then((res) => setControllerApiStatus(res.status));
 		GinApiLib.getStatus().then((res) => setGinApiStatus(res.status));
-	};
-
-	const getStatusResult = (status: number | null) => {
-		if (status === null) {
-			return <></>;
-		}
-		if (status === 200) {
-			return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><TickIcon /> Online</Box>; // eslint-disable-line prettier/prettier
-		}
-		return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><CrossIcon /> Offline, Http status: {status}</Box>; // eslint-disable-line prettier/prettier
 	};
 
 	return (
