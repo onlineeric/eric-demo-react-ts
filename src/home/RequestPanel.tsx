@@ -8,17 +8,30 @@ import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 
+const LOADING_STATUS = 'loading';
+
+const getStatusResult = (status: number | null | typeof LOADING_STATUS) => {
+	const TickIcon = styled(CheckCircleIcon)({ color: 'green' });
+	const CrossIcon = styled(CancelIcon)({ color: 'red' });
+	const HourglassIcon = styled(HourglassEmptyIcon)({ color: 'yellow' });
+	if (status === null) {
+		return <></>;
+	}
+	if (status === LOADING_STATUS) {
+		return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><HourglassIcon /> Loading...</Box>; // eslint-disable-line prettier/prettier
+	}
+	if (status === 200) {
+		return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><TickIcon /> Completed</Box>; // eslint-disable-line prettier/prettier
+	}
+	return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><CrossIcon /> Error, Http status: {status}</Box>; // eslint-disable-line prettier/prettier
+};
+
 export default function RequestPanel() {
-	const LOADING_STATUS = 'loading';
 	// get env var
 	const [executeTimes, setExecuteTimes] = React.useState(100);
 	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
-
-	const TickIcon = styled(CheckCircleIcon)({ color: 'green' });
-	const CrossIcon = styled(CancelIcon)({ color: 'red' });
-	const HourglassIcon = styled(HourglassEmptyIcon)({ color: 'yellow' });
 
 	const callAPIs = async () => {
 		if (executeTimes < 1 || executeTimes > 1000) {
@@ -41,19 +54,6 @@ export default function RequestPanel() {
 			console.log('ginApi res:', res3);
 			setGinApiStatus(res3.status);
 		});
-	};
-
-	const getStatusResult = (status: number | null | typeof LOADING_STATUS) => {
-		if (status === null) {
-			return <></>;
-		}
-		if (status === LOADING_STATUS) {
-			return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><HourglassIcon /> Loading...</Box>; // eslint-disable-line prettier/prettier
-		}
-		if (status === 200) {
-			return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><TickIcon /> Completed</Box>; // eslint-disable-line prettier/prettier
-		}
-		return <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}><CrossIcon /> Error, Http status: {status}</Box>; // eslint-disable-line prettier/prettier
 	};
 
 	return (
