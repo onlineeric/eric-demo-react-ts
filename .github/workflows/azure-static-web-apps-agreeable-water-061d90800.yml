@@ -36,8 +36,8 @@ jobs:
           REACT_APP_AUTH_PASSWORD_ericcontrollerbasedapi: ${{ secrets.REACT_APP_AUTH_PASSWORD_ERICCONTROLLERBASEDAPI }}
           REACT_APP_AUTH_PASSWORD_ericminimalapi: ${{ secrets.REACT_APP_AUTH_PASSWORD_ERICMINIMALAPI }}
           REACT_APP_AUTH_PASSWORD_eric_gin_server: ${{ secrets.REACT_APP_AUTH_PASSWORD_ERIC_GIN_SERVER }}
-          REACT_APP_API_URL_eric_gin_server: ${{ env.REACT_APP_API_URL_ERIC_GIN_SERVER }}
-          REACT_APP_API_URL_ericcontrollerbasedapi: ${{ env.REACT_APP_API_URL_ERICCONTROLLERBASEDAPI }}
+          REACT_APP_API_URL_eric_gin_server: ${{ secrets.REACT_APP_API_URL_ERIC_GIN_SERVER }}
+          REACT_APP_API_URL_ericcontrollerbasedapi: ${{ vars.REACT_APP_API_URL_ERICCONTROLLERBASEDAPI }}
           REACT_APP_API_URL_ericminimalapi: ${{ env.REACT_APP_API_URL_ERICMINIMALAPI }}
           REACT_APP_AUTH_USERNAME_ericcontrollerbasedapi: ${{ env.REACT_APP_AUTH_USERNAME_ERICCONTROLLERBASEDAPI }}
           REACT_APP_AUTH_USERNAME_ericminimalapi: ${{ env.REACT_APP_AUTH_USERNAME_ERICMINIMALAPI }}

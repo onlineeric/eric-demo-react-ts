@@ -4,6 +4,8 @@ class GinApiLib {
 	private ginApi: AxiosInstance;
 
 	constructor() {
+		console.log('process.env.REACT_APP_API_URL_eric_gin_server:', process.env.REACT_APP_API_URL_eric_gin_server);
+
 		this.ginApi = axios.create({
 			baseURL: process.env.REACT_APP_API_URL_eric_gin_server,
 			auth: {

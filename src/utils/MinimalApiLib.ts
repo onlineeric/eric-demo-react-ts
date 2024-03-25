@@ -4,6 +4,8 @@ class MinimalApiLib {
 	private minimalApi: AxiosInstance;
 
 	constructor() {
+		console.log('process.env.REACT_APP_API_URL_ericminimalapi:', process.env.REACT_APP_API_URL_ericminimalapi);
+
 		this.minimalApi = axios.create({
 			baseURL: process.env.REACT_APP_API_URL_ericminimalapi,
 			auth: {
