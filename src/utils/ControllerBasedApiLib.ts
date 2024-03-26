@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { ResponseResult } from '../store/serverResponsesSlice';
 
 class ControllerBasedApiLib {
 	private controllerBasedApi: AxiosInstance;
@@ -33,7 +34,17 @@ class ControllerBasedApiLib {
 		}
 	}
 
-	// Add more methods for other API endpoints
+	createServerResponse(res: AxiosResponse): ResponseResult {
+		return {
+			id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+			server: 'Controller based API server (c#)',
+			algorithm: 'Sha256', // todo: get from response
+			parallelization: false, // todo: get from response
+			executionTime: res.data.executionTime,
+			memoryUsed: res.data.memoryUsed,
+			responsedAt: res.data.finishedTime,
+		} as ResponseResult;
+	}
 }
 
 export default new ControllerBasedApiLib();

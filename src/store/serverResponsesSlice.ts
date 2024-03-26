@@ -2,18 +2,18 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 
 // Define a type for the slice state
-interface ServerResponse {
+export interface ResponseResult {
 	id: string | null;
 	server: string | null;
 	algorithm: string | null;
 	parallelization: boolean | null;
 	executionTime: number | null;
 	memoryUsed: number | null;
-	responsedAt: Date | null;
+	responsedAt: string | null;
 }
 
 // Define the initial state using that type
-const initialState: ServerResponse[] = [];
+const initialState: ResponseResult[] = [];
 
 export const serverResponsesSlice = createSlice({
 	name: 'serverResponses',
@@ -21,7 +21,7 @@ export const serverResponsesSlice = createSlice({
 	initialState,
 	reducers: {
 		// Use the PayloadAction type to declare the contents of `action.payload`
-		addResponse: (state, action: PayloadAction<ServerResponse>) => {
+		addResponse: (state, action: PayloadAction<ResponseResult>) => {
 			state.push(action.payload);
 		},
 		clearAll: (state) => {

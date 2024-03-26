@@ -8,6 +8,8 @@ import SyncIcon from '@mui/icons-material/Sync';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { keyframes } from '@emotion/react';
+import { useAppDispatch } from '../store/hooks';
+import { addResponse } from '../store/serverResponsesSlice';
 
 const LOADING_STATUS = 'loading';
 
@@ -38,6 +40,7 @@ export default function RequestPanel() {
 	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
+	const dispatch = useAppDispatch();
 
 	const callAPIs = React.useCallback(async () => {
 		if (executeTimes < 1 || executeTimes > 1000) {
@@ -47,17 +50,14 @@ export default function RequestPanel() {
 		setMinimalApiStatus(LOADING_STATUS);
 		setGinApiStatus(LOADING_STATUS);
 
-		console.log('callAPIs', executeTimes);
 		ControllerBasedApiLib.getSha256Benchmark(executeTimes).then((res) => {
-			console.log('Controller API res:', res);
 			setControllerApiStatus(res.status);
+			dispatch(addResponse(ControllerBasedApiLib.createServerResponse(res)));
 		});
 		MinimalApiLib.getSha256Benchmark(executeTimes).then((res) => {
-			console.log('minimalApi res:', res);
 			setMinimalApiStatus(res.status);
 		});
 		GinApiLib.getSha256Benchmark(executeTimes).then((res3) => {
-			console.log('ginApi res:', res3);
 			setGinApiStatus(res3.status);
 		});
 	}, []);
