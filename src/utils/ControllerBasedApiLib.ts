@@ -37,9 +37,9 @@ class ControllerBasedApiLib {
 	createServerResponse(res: AxiosResponse): ResponseResult {
 		return {
 			id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
-			server: 'Controller based API server (c#)',
-			algorithm: 'Sha256', // todo: get from response
-			parallelization: false, // todo: get from response
+			server: res.data.server,
+			algorithm: res.data.algorithm,
+			parallelization: res.data.parallelization,
 			executionTime: res.data.executionTime,
 			memoryUsed: res.data.memoryUsed,
 			responsedAt: res.data.finishedTime,
