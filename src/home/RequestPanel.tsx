@@ -36,14 +36,14 @@ const getStatusResult = (status: number | null | typeof LOADING_STATUS) => {
 
 export default function RequestPanel() {
 	// get env var
-	const [executeTimes, setExecuteTimes] = React.useState(100);
+	const [numIterations, setNumIterations] = React.useState(100);
 	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const dispatch = useAppDispatch();
 
 	const callAPIs = React.useCallback(async () => {
-		if (executeTimes < 1 || executeTimes > 1000) {
+		if (numIterations < 1 || numIterations > 1000) {
 			return;
 		}
 		dispatch(clearAllResponses());
@@ -51,19 +51,19 @@ export default function RequestPanel() {
 		setMinimalApiStatus(LOADING_STATUS);
 		setGinApiStatus(LOADING_STATUS);
 
-		ControllerBasedApiLib.getSha256Benchmark(executeTimes).then((res) => {
+		ControllerBasedApiLib.getSha256Benchmark(numIterations).then((res) => {
 			setControllerApiStatus(res.status);
 			dispatch(addResponse(ControllerBasedApiLib.createServerResponse(res)));
 		});
-		MinimalApiLib.getSha256Benchmark(executeTimes).then((res) => {
+		MinimalApiLib.getSha256Benchmark(numIterations).then((res) => {
 			setMinimalApiStatus(res.status);
 			dispatch(addResponse(MinimalApiLib.createServerResponse(res)));
 		});
-		GinApiLib.getSha256Benchmark(executeTimes).then((res) => {
+		GinApiLib.getSha256Benchmark(numIterations).then((res) => {
 			setGinApiStatus(res.status);
 			dispatch(addResponse(GinApiLib.createServerResponse(res)));
 		});
-	}, [executeTimes]);
+	}, [numIterations]);
 
 	return (
 		<Paper
@@ -85,14 +85,14 @@ export default function RequestPanel() {
 			</div>
 			<Box sx={{ display: 'flex', alignItems: 'center', mt: 1, mb: 1 }}>
 				<TextField
-					id="idTextExecTimes"
-					label="Execute times"
+					id="idNumIterations"
+					label="Number of Test Iterations"
 					variant="outlined"
-					value={executeTimes}
+					value={numIterations}
 					type="number"
-					onChange={(e) => setExecuteTimes(parseInt(e.target.value))}
-					error={executeTimes < 1 || executeTimes > 1000}
-					helperText={executeTimes < 1 || executeTimes > 1000 ? '1 ~ 1000' : ''}
+					onChange={(e) => setNumIterations(parseInt(e.target.value))}
+					error={numIterations < 1 || numIterations > 1000}
+					helperText={numIterations < 1 || numIterations > 1000 ? '1 ~ 1000' : ''}
 				/>
 				<Button variant="contained" color="primary" sx={{ ml: 2 }} onClick={callAPIs}>
 					Submit
