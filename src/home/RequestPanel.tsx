@@ -9,7 +9,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { keyframes } from '@emotion/react';
 import { useAppDispatch } from '../store/hooks';
-import { addResponse } from '../store/serverResponsesSlice';
+import { addResponse, clearAllResponses } from '../store/serverResponsesSlice';
 
 const LOADING_STATUS = 'loading';
 
@@ -46,6 +46,7 @@ export default function RequestPanel() {
 		if (executeTimes < 1 || executeTimes > 1000) {
 			return;
 		}
+		dispatch(clearAllResponses());
 		setControllerApiStatus(LOADING_STATUS);
 		setMinimalApiStatus(LOADING_STATUS);
 		setGinApiStatus(LOADING_STATUS);
@@ -56,11 +57,13 @@ export default function RequestPanel() {
 		});
 		MinimalApiLib.getSha256Benchmark(executeTimes).then((res) => {
 			setMinimalApiStatus(res.status);
+			dispatch(addResponse(MinimalApiLib.createServerResponse(res)));
 		});
-		GinApiLib.getSha256Benchmark(executeTimes).then((res3) => {
-			setGinApiStatus(res3.status);
+		GinApiLib.getSha256Benchmark(executeTimes).then((res) => {
+			setGinApiStatus(res.status);
+			dispatch(addResponse(GinApiLib.createServerResponse(res)));
 		});
-	}, []);
+	}, [executeTimes]);
 
 	return (
 		<Paper

@@ -9,7 +9,7 @@ export interface ResponseResult {
 	parallelization: boolean | null;
 	executionTime: number | null;
 	memoryUsed: number | null;
-	responsedAt: string | null;
+	finishedTime: string | null;
 }
 
 // Define the initial state using that type
@@ -24,13 +24,13 @@ export const serverResponsesSlice = createSlice({
 		addResponse: (state, action: PayloadAction<ResponseResult>) => {
 			state.push(action.payload);
 		},
-		clearAll: (state) => {
+		clearAllResponses: (state) => {
 			state.splice(0, state.length);
 		},
 	},
 });
 
-export const { addResponse, clearAll } = serverResponsesSlice.actions;
+export const { addResponse, clearAllResponses } = serverResponsesSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectServerResponses = (state: RootState) => state.serverResponses;

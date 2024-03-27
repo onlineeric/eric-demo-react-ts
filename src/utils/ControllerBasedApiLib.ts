@@ -35,15 +35,8 @@ class ControllerBasedApiLib {
 	}
 
 	createServerResponse(res: AxiosResponse): ResponseResult {
-		return {
-			id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
-			server: res.data.server,
-			algorithm: res.data.algorithm,
-			parallelization: res.data.parallelization,
-			executionTime: res.data.executionTime,
-			memoryUsed: res.data.memoryUsed,
-			responsedAt: res.data.finishedTime,
-		} as ResponseResult;
+		// res.data is same structure as ResponseResult, no need to convert
+		return res.data as ResponseResult;
 	}
 }
 

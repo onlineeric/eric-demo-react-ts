@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { ResponseResult } from '../store/serverResponsesSlice';
 
 class GinApiLib {
 	private ginApi: AxiosInstance;
@@ -33,7 +34,10 @@ class GinApiLib {
 		}
 	}
 
-	// Add more methods for other API endpoints
+	createServerResponse(res: AxiosResponse): ResponseResult {
+		// res.data is same structure as ResponseResult, no need to convert
+		return res.data as ResponseResult;
+	}
 }
 
 export default new GinApiLib();
