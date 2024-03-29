@@ -3,7 +3,7 @@ import { Box, Paper } from '@mui/material';
 import Title from '../common/Title';
 import { DataGrid, GridValueFormatterParams } from '@mui/x-data-grid';
 import { useAppSelector } from '../store/hooks';
-import { selectResponsesWithConvertedDates } from '../store/serverResponsesSlice';
+import { selectServerResponses } from '../store/serverResponsesSlice';
 import { format } from 'date-fns';
 
 const columns = [
@@ -24,7 +24,11 @@ const columns = [
 ];
 
 export default function ResponsePanel() {
-	const responses = useAppSelector(selectResponsesWithConvertedDates);
+	const responses = useAppSelector(selectServerResponses);
+	const responsesWithConvertedDates = responses.map((res) => ({
+		...res,
+		finishedTime_date: new Date(res.finishedTime ?? ''),
+	}));
 
 	return (
 		<Paper
@@ -37,7 +41,7 @@ export default function ResponsePanel() {
 		>
 			<Title>Responses from servers</Title>
 			<Box sx={{ height: 300, width: '100%', minHeight: 200 }}>
-				<DataGrid rows={responses} columns={columns} hideFooter />
+				<DataGrid rows={responsesWithConvertedDates} columns={columns} hideFooter />
 			</Box>
 		</Paper>
 	);
