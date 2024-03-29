@@ -51,17 +51,43 @@ export default function RequestPanel() {
 		setMinimalApiStatus(LOADING_STATUS);
 		setGinApiStatus(LOADING_STATUS);
 
-		ControllerBasedApiLib.getSha256Benchmark(numIterations).then((res) => {
-			setControllerApiStatus(res.status);
+		const cbPromise1 = ControllerBasedApiLib.getSha256Benchmark(numIterations).then((res) => {
 			dispatch(addResponse(ControllerBasedApiLib.convertResToState(res)));
+			return res.status;
 		});
-		MinimalApiLib.getSha256Benchmark(numIterations).then((res) => {
-			setMinimalApiStatus(res.status);
+		const cbPromise2 = ControllerBasedApiLib.getMd5Benchmark(numIterations).then((res) => {
+			dispatch(addResponse(ControllerBasedApiLib.convertResToState(res)));
+			return res.status;
+		});
+		Promise.all([cbPromise1, cbPromise2]).then((statuses) => {
+			const status = statuses.find((s) => s !== 200) ?? 200;
+			setControllerApiStatus(status);
+		});
+
+		const minPromise1 = MinimalApiLib.getSha256Benchmark(numIterations).then((res) => {
 			dispatch(addResponse(MinimalApiLib.convertResToState(res)));
+			return res.status;
 		});
-		GinApiLib.getSha256Benchmark(numIterations).then((res) => {
-			setGinApiStatus(res.status);
+		const minPromise2 = MinimalApiLib.getMd5Benchmark(numIterations).then((res) => {
+			dispatch(addResponse(MinimalApiLib.convertResToState(res)));
+			return res.status;
+		});
+		Promise.all([minPromise1, minPromise2]).then((statuses) => {
+			const status = statuses.find((s) => s !== 200) ?? 200;
+			setMinimalApiStatus(status);
+		});
+
+		const ginPromise1 = GinApiLib.getSha256Benchmark(numIterations).then((res) => {
 			dispatch(addResponse(GinApiLib.convertResToState(res)));
+			return res.status;
+		});
+		const ginPromise2 = GinApiLib.getMd5Benchmark(numIterations).then((res) => {
+			dispatch(addResponse(GinApiLib.convertResToState(res)));
+			return res.status;
+		});
+		Promise.all([ginPromise1, ginPromise2]).then((statuses) => {
+			const status = statuses.find((s) => s !== 200) ?? 200;
+			setGinApiStatus(status);
 		});
 	}, [numIterations]);
 
