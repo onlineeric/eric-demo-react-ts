@@ -53,15 +53,15 @@ export default function RequestPanel() {
 
 		ControllerBasedApiLib.getSha256Benchmark(numIterations).then((res) => {
 			setControllerApiStatus(res.status);
-			dispatch(addResponse(ControllerBasedApiLib.createServerResponse(res)));
+			dispatch(addResponse(ControllerBasedApiLib.convertResToState(res)));
 		});
 		MinimalApiLib.getSha256Benchmark(numIterations).then((res) => {
 			setMinimalApiStatus(res.status);
-			dispatch(addResponse(MinimalApiLib.createServerResponse(res)));
+			dispatch(addResponse(MinimalApiLib.convertResToState(res)));
 		});
 		GinApiLib.getSha256Benchmark(numIterations).then((res) => {
 			setGinApiStatus(res.status);
-			dispatch(addResponse(GinApiLib.createServerResponse(res)));
+			dispatch(addResponse(GinApiLib.convertResToState(res)));
 		});
 	}, [numIterations]);
 

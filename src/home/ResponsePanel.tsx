@@ -11,7 +11,7 @@ const columns = [
 	{ field: 'parallelization', headerName: 'Parallelization', width: 200 },
 	{ field: 'executionTime', headerName: 'Execution Time(ms)', width: 180 },
 	{ field: 'memoryUsed', headerName: 'Memory Used', width: 150 },
-	{ field: 'responsedAt', headerName: 'Responsed At', width: 200 },
+	{ field: 'finishedTime', headerName: 'Responsed Time', width: 200 },
 ];
 
 // const rows = [

@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { ResponseResult } from '../store/serverResponsesSlice';
+import { IResponseState } from '../store/serverResponsesSlice';
 
 class MinimalApiLib {
 	private minimalApi: AxiosInstance;
@@ -34,9 +34,9 @@ class MinimalApiLib {
 		}
 	}
 
-	createServerResponse(res: AxiosResponse): ResponseResult {
+	convertResToState(res: AxiosResponse): IResponseState {
 		// res.data is same structure as ResponseResult, no need to convert
-		return res.data as ResponseResult;
+		return res.data as IResponseState;
 	}
 }
 
