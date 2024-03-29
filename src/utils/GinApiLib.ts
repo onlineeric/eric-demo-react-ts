@@ -19,7 +19,17 @@ class GinApiLib {
 			const response: AxiosResponse = await this.ginApi.get(`/benchmark/Sha256/${exeTimes}`);
 			return response;
 		} catch (error) {
-			console.error(error);
+			console.error('Error in getSha256Benchmark: ', error);
+			throw error;
+		}
+	}
+
+	async getMd5Benchmark(exeTimes: number): Promise<AxiosResponse> {
+		try {
+			const response: AxiosResponse = await this.ginApi.get(`/benchmark/Md5/${exeTimes}`);
+			return response;
+		} catch (error) {
+			console.error('Error in getMd5Benchmark: ', error);
 			throw error;
 		}
 	}
@@ -29,7 +39,7 @@ class GinApiLib {
 			const response: AxiosResponse = await this.ginApi.get(`/status`);
 			return response;
 		} catch (error) {
-			console.error(error);
+			console.error('Error in getStatus: ', error);
 			throw error;
 		}
 	}
