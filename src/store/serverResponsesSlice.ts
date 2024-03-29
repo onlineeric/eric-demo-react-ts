@@ -11,6 +11,16 @@ export interface IResponseState {
 	memoryUsed: number | null;
 	finishedTime: string | null;
 }
+export interface IResponseWithConvertedDate {
+	id: string | null;
+	server: string | null;
+	algorithm: string | null;
+	parallelization: boolean | null;
+	executionTime: number | null;
+	memoryUsed: number | null;
+	finishedTime: string | null;
+	finishedTime_date: Date;
+}
 
 // Define the initial state using that type
 const initialState: IResponseState[] = [];
@@ -34,5 +44,12 @@ export const { addResponse, clearAllResponses } = serverResponsesSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectServerResponses = (state: RootState) => state.serverResponses;
+
+export const selectResponsesWithConvertedDates = (state: RootState): IResponseWithConvertedDate[] => {
+	return state.serverResponses.map((res) => ({
+		...res,
+		finishedTime_date: new Date(res.finishedTime ?? ''),
+	}));
+};
 
 export default serverResponsesSlice.reducer;
