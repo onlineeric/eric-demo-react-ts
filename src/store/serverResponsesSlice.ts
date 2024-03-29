@@ -11,14 +11,7 @@ export interface IResponseState {
 	memoryUsed: number | null;
 	finishedTime: string | null;
 }
-export interface IResponseWithConvertedDate {
-	id: string | null;
-	server: string | null;
-	algorithm: string | null;
-	parallelization: boolean | null;
-	executionTime: number | null;
-	memoryUsed: number | null;
-	finishedTime: string | null;
+export interface IResponseWithConvertedDate extends IResponseState {
 	finishedTime_date: Date;
 }
 
