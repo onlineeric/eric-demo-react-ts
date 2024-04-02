@@ -5,7 +5,8 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { keyframes } from '@emotion/react';
 
-const LOADING_STATUS = 'loading';
+export const LOADING_STATUS = 'loading';
+
 const spin = keyframes`
 0% { transform: rotate(360deg); }
 1000% { transform: rotate(0deg); }

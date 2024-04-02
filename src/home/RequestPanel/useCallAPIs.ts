@@ -4,8 +4,7 @@ import MinimalApiLib from '../../utils/MinimalApiLib';
 import GinApiLib from '../../utils/GinApiLib';
 import { useAppDispatch } from '../../store/hooks';
 import { addResponse, clearAllResponses } from '../../store/serverResponsesSlice';
-
-const LOADING_STATUS = 'loading';
+import { LOADING_STATUS } from './getStatusResult';
 
 export const useCallAPIs = (numIterations: number | null) => {
 	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
