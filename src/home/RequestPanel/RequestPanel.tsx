@@ -7,7 +7,7 @@ import { useCallAPIs } from './useCallAPIs';
 export default function RequestPanel() {
 	// get env var
 	const [numIterations, setNumIterations] = React.useState(100);
-	const [sendIterations, setSendIterations] = React.useState<number | null>(null);
+	const [sendIterations, setSendIterations] = React.useState<{ iterations: number | null }>({ iterations: null });
 	const [minimalApiStatus, controllerApiStatus, ginApiStatus] = useCallAPIs(sendIterations);
 
 	return (
@@ -39,7 +39,13 @@ export default function RequestPanel() {
 					error={numIterations < 1 || numIterations > 1000}
 					helperText={numIterations < 1 || numIterations > 1000 ? '1 ~ 1000' : ''}
 				/>
-				<Button variant="contained" color="primary" sx={{ ml: 2 }} onClick={() => setSendIterations(numIterations)}>
+				<Button
+					variant="contained"
+					color="primary"
+					sx={{ ml: 2 }}
+					// On each click, the API is called. As the state is an object, its reference changes even if the value remains the same.
+					onClick={() => setSendIterations({ iterations: numIterations })}
+				>
 					Submit
 				</Button>
 			</Box>
