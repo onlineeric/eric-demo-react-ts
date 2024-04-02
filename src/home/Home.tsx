@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Grid, Paper } from '@mui/material';
-import RequestPanel from './RequestPanel';
+import RequestPanel from './RequestPanel/RequestPanel';
 import ResponsePanel from './ResponsePanel';
 import ServerStatusPanel from './ServerStatusPanel';
 
