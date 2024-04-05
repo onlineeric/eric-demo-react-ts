@@ -8,8 +8,8 @@ import { format } from 'date-fns';
 
 const columns = [
 	{ field: 'server', headerName: 'Server', width: 300 },
-	{ field: 'algorithm', headerName: 'Algorithm', width: 300 },
-	{ field: 'parallelization', headerName: 'Parallelization', width: 200 },
+	{ field: 'algorithm', headerName: 'Algorithm', width: 150 },
+	{ field: 'parallelization', headerName: 'Parallelization', width: 150 },
 	{ field: 'executionTime', headerName: 'Execution Time(ms)', width: 180 },
 	{ field: 'memoryUsed', headerName: 'Memory Used', width: 150 },
 	{
