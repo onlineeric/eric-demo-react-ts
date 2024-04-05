@@ -1,15 +1,10 @@
 import * as React from 'react';
 import { Paper } from '@mui/material';
 import Title from '../common/Title';
-import { useAppSelector } from '../store/hooks';
-import { selectServerResponses } from '../store/serverResponsesSlice';
+import { useServerResWithConvertedDates } from '../store/useServerResWithConvertedDate';
 
 export default function ResultChatPanel() {
-	const responses = useAppSelector(selectServerResponses);
-	const responsesWithConvertedDates = responses.map((res) => ({
-		...res,
-		finishedTime_date: new Date(res.finishedTime ?? ''),
-	}));
+	const responsesWithConvertedDates = useServerResWithConvertedDates();
 
 	return (
 		<Paper
@@ -21,7 +16,7 @@ export default function ResultChatPanel() {
 			}}
 		>
 			<Title>Result Chat</Title>
-			{responsesWithConvertedDates.length}
+			Number of records: {responsesWithConvertedDates.length}
 		</Paper>
 	);
 }
