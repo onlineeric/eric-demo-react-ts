@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Grid, Paper } from '@mui/material';
+import { Grid } from '@mui/material';
 import RequestPanel from './RequestPanel/RequestPanel';
 import ResponsePanel from './ResponsePanel';
 import ServerStatusPanel from './ServerStatusPanel';
+import ResultChatPanel from './ResultChatPanel';
 
 export default function Home() {
 	return (
@@ -21,7 +22,7 @@ export default function Home() {
 			</Grid>
 			{/* result chat */}
 			<Grid item xs={12}>
-				<Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>result chat</Paper>
+				<ResultChatPanel />
 			</Grid>
 		</Grid>
 	);
