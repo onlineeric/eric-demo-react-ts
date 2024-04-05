@@ -2,9 +2,8 @@ import * as React from 'react';
 import { Box, Paper } from '@mui/material';
 import Title from '../common/Title';
 import { DataGrid, GridValueFormatterParams } from '@mui/x-data-grid';
-import { useAppSelector } from '../store/hooks';
-import { selectServerResponses } from '../store/serverResponsesSlice';
 import { format } from 'date-fns';
+import { useServerResWithConvertedDates } from '../store/useServerResWithConvertedDate';
 
 const columns = [
 	{ field: 'server', headerName: 'Server', width: 300 },
@@ -24,11 +23,7 @@ const columns = [
 ];
 
 export default function ResponsePanel() {
-	const responses = useAppSelector(selectServerResponses);
-	const responsesWithConvertedDates = responses.map((res) => ({
-		...res,
-		finishedTime_date: new Date(res.finishedTime ?? ''),
-	}));
+	const responsesWithConvertedDates = useServerResWithConvertedDates();
 
 	return (
 		<Paper
