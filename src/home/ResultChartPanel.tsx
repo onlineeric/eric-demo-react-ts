@@ -59,15 +59,19 @@ export default function ResultChartPanel() {
 		>
 			<Title>Result Chat</Title>
 			<Box sx={{ minWidth: 500, maxWidth: 800 }}>
-				<BarChart
-					layout="horizontal"
-					yAxis={[{ data: chartData.labels, scaleType: 'band' }]}
-					series={chartData.serverData.map((server) => ({
-						label: server.name,
-						data: server.data,
-					}))}
-					{...chartSetting}
-				/>
+				{chartData.serverData.length === 0 ? (
+					<div>No data</div>
+				) : (
+					<BarChart
+						layout="horizontal"
+						yAxis={[{ data: chartData.labels, scaleType: 'band' }]}
+						series={chartData.serverData.map((server) => ({
+							label: server.name,
+							data: server.data,
+						}))}
+						{...chartSetting}
+					/>
+				)}
 			</Box>
 		</Paper>
 	);
