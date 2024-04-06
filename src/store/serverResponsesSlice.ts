@@ -3,13 +3,13 @@ import type { RootState } from './store';
 
 // Define a type for the slice state
 export interface IResponseState {
-	id: string | null;
-	server: string | null;
-	algorithm: string | null;
-	parallelization: boolean | null;
-	executionTime: number | null;
+	id: string;
+	server: string;
+	algorithm: string;
+	parallelization: boolean;
+	executionTime: number;
 	memoryUsed: number | null;
-	finishedTime: string | null;
+	finishedTime: string;
 }
 
 // Define the initial state using that type
