@@ -4,7 +4,7 @@ import Title from '../common/Title';
 import { useServerResWithConvertedDates } from '../store/useServerResWithConvertedDate';
 import { BarChart } from '@mui/x-charts';
 
-export default function ResultChatPanel() {
+export default function ResultChartPanel() {
 	const responsesWithConvertedDates = useServerResWithConvertedDates();  // eslint-disable-line
 	// const chartData = convertResToChartData(responsesWithConvertedDates);
 

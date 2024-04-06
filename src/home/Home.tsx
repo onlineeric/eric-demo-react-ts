@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import RequestPanel from './RequestPanel/RequestPanel';
 import ResponsePanel from './ResponsePanel';
 import ServerStatusPanel from './ServerStatusPanel';
-import ResultChatPanel from './ResultChatPanel';
+import ResultChartPanel from './ResultChartPanel';
 
 export default function Home() {
 	return (
@@ -22,7 +22,7 @@ export default function Home() {
 			</Grid>
 			{/* result chat */}
 			<Grid item xs={12}>
-				<ResultChatPanel />
+				<ResultChartPanel />
 			</Grid>
 		</Grid>
 	);
