@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Box, Paper, Typography } from '@mui/material';
 import Title from '../common/Title';
+import { useTheme } from '@mui/material/styles';
 
 export default function AppDescPanel() {
+	const theme = useTheme();
+
 	return (
 		<Paper
 			sx={{
@@ -14,13 +17,19 @@ export default function AppDescPanel() {
 		>
 			<Title>Eric Demo Project Site</Title>
 			<Typography variant="body1" sx={{ lineHeight: 1.7 }}>
-				{`Welcome! This website is a personal demo project, where I, Eric Cheng, to demonstrate my skills of Node.js, React, C#, GoLang and more.`}
+				{`Welcome! This website is my personal demo project, where I, Eric Cheng, to demonstrate my skills of Node.js, React, C#, GoLang and more.`}
 				<br />
 				{`This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.`}
 				<br />
 				{`The backend connents to my other demo projects, which are built using .Net C#, and GoLang.`}
 				<br />
-				{`LLM AI demo project is on the way!`}
+				{`An LLM AI demo project is on the way! Please visit `}
+				<a
+					href="https://github.com/onlineeric"
+					style={{ color: theme.palette.mode === 'dark' ? 'lightblue' : 'inherit' }}
+				>
+					my GitHub Repository here.
+				</a>
 			</Typography>
 			<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1 }}>
 				<img src="https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat" alt="React" />
