@@ -26,6 +26,8 @@ export default function AppDescPanel() {
 				{`An LLM AI demo project is on the way! Please visit `}
 				<a
 					href="https://github.com/onlineeric"
+					target="_blank"
+					rel="noopener noreferrer"
 					style={{ color: theme.palette.mode === 'dark' ? 'lightblue' : 'inherit' }}
 				>
 					my GitHub Repository here.
