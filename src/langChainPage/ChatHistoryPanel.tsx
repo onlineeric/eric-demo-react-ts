@@ -2,18 +2,21 @@ import * as React from 'react';
 import { Paper, Typography } from '@mui/material';
 import { ChatOpenAI } from '@langchain/openai';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
+import { StringOutputParser } from '@langchain/core/output_parsers';
+
+const chatModel = new ChatOpenAI({
+	apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+});
 
 const prompt = ChatPromptTemplate.fromMessages([
 	['system', 'You are a world class technical documentation writer.'],
+	['system', 'Provide your answer in point form.'],
 	['user', '{input}'],
 ]);
 
-export default function ChatHistoryPanel() {
-	const chatModel = new ChatOpenAI({
-		apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-	});
-	const chain = prompt.pipe(chatModel);
+const chain = prompt.pipe(chatModel).pipe(new StringOutputParser());
 
+export default function ChatHistoryPanel() {
 	const [chatResponse, setChatResponse] = React.useState('');
 
 	React.useEffect(() => {
@@ -22,7 +25,7 @@ export default function ChatHistoryPanel() {
 				input: 'what is LangSmith?',
 			});
 			console.log('chatRes:', chatRes);
-			setChatResponse(chatRes.content.toString());
+			setChatResponse(chatRes);
 		};
 
 		getChatResponse();
