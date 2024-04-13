@@ -5,6 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import HomeIcon from '@mui/icons-material/Home';
 import SpeedIcon from '@mui/icons-material/Speed';
+import LinkIcon from '@mui/icons-material/Link';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
@@ -13,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 const mainListItemsData = [
 	{ icon: HomeIcon, text: 'Home', route: '/home' },
 	{ icon: SpeedIcon, text: 'Benchmark', route: '/benchmark' },
+	{ icon: LinkIcon, text: 'LangChain', route: '/langchaindemo' },
 ];
 
 const secondaryListItemsData = [
