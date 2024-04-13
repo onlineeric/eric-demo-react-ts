@@ -3,12 +3,20 @@ import { Paper, Typography } from '@mui/material';
 import { ChatOpenAI } from '@langchain/openai';
 
 export default function ChatHistoryPanel() {
-	const chatModel = new ChatOpenAI({});
+	const chatModel = new ChatOpenAI({
+		apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+	});
 
-	const getChatResponse = async () => {
-		const chatRes = await chatModel.invoke('what is LangSmith?');
-		return chatRes.content.toString();
-	};
+	const [chatResponse, setChatResponse] = React.useState('');
+
+	React.useEffect(() => {
+		const getChatResponse = async () => {
+			const chatRes = await chatModel.invoke('what is LangSmith?');
+			setChatResponse(chatRes.content.toString());
+		};
+
+		getChatResponse();
+	}, []);
 
 	return (
 		<Paper
@@ -20,7 +28,7 @@ export default function ChatHistoryPanel() {
 			}}
 		>
 			<Typography variant="body1" sx={{ lineHeight: 1.7 }}>
-				<>{getChatResponse()}</>
+				<>{chatResponse}</>
 			</Typography>
 		</Paper>
 	);
