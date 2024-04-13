@@ -3,7 +3,7 @@ import { Box, Paper, Typography } from '@mui/material';
 import Title from '../common/Title';
 import { useTheme } from '@mui/material/styles';
 
-export default function AppDescPanel() {
+export default function DescPanel() {
 	const theme = useTheme();
 
 	return (
@@ -15,7 +15,7 @@ export default function AppDescPanel() {
 				height: 220,
 			}}
 		>
-			<Title>Eric Demo Project Site</Title>
+			<Title>Benchmark page</Title>
 			<Typography variant="body1" sx={{ lineHeight: 1.7 }}>
 				{`Welcome! This website is my personal demo project, where I, Eric Cheng, to demonstrate my skills of Node.js, React, C#, GoLang and more.`}
 				<br />

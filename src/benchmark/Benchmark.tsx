@@ -4,14 +4,14 @@ import RequestPanel from './RequestPanel/RequestPanel';
 import ResponsePanel from './ResponsePanel';
 import ServerStatusPanel from './ServerStatusPanel';
 import ResultChartPanel from './ResultChartPanel';
-import AppDescPanel from './AppDescPanel';
+import DescPanel from './DescPanel';
 
 export default function Benchmark() {
 	return (
 		<Grid container spacing={3}>
-			{/* App Description Panel */}
+			{/* Description Panel */}
 			<Grid item xs={12}>
-				<AppDescPanel />
+				<DescPanel />
 			</Grid>
 			{/* Server Status Panel */}
 			<Grid item xs={12} md={5} xl={4}>
