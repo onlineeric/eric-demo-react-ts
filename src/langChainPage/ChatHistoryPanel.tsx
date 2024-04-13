@@ -6,6 +6,7 @@ import { StringOutputParser } from '@langchain/core/output_parsers';
 
 const chatModel = new ChatOpenAI({
 	apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+	//model: 'gpt-4',
 });
 
 const prompt = ChatPromptTemplate.fromMessages([
