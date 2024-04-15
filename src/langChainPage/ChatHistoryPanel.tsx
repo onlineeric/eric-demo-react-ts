@@ -23,7 +23,7 @@ export default function ChatHistoryPanel() {
 	React.useEffect(() => {
 		const getChatResponse = async () => {
 			const chatRes = await chain.invoke({
-				input: 'what is LangSmith?',
+				input: 'what is LangSmith in AI development?',
 			});
 			console.log('chatRes:', chatRes);
 			setChatResponse(chatRes);
