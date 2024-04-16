@@ -15,8 +15,8 @@ export default function DescPanel() {
 				height: 220,
 			}}
 		>
-			<Title>Benchmark page</Title>
 			<Box sx={{ overflowX: 'auto' }}>
+				<Title>Benchmark page</Title>
 				<Typography variant="body1" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`Welcome! This website is my personal demo project, where I, Eric Cheng, to demonstrate my skills of Node.js, React, C#, GoLang and more.`}
 					<br />
