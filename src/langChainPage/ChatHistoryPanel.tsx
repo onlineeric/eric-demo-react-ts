@@ -8,6 +8,7 @@ import SendIcon from '@mui/icons-material/Send';
 const chatModel = new ChatOpenAI({
 	apiKey: process.env.REACT_APP_OPENAI_API_KEY,
 	//model: 'gpt-4',
+	temperature: 0.6,
 });
 
 const prompt = ChatPromptTemplate.fromMessages([
