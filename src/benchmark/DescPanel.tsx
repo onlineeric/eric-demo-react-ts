@@ -16,23 +16,25 @@ export default function DescPanel() {
 			}}
 		>
 			<Title>Benchmark page</Title>
-			<Typography variant="body1" sx={{ lineHeight: 1.7 }}>
-				{`Welcome! This website is my personal demo project, where I, Eric Cheng, to demonstrate my skills of Node.js, React, C#, GoLang and more.`}
-				<br />
-				{`This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.`}
-				<br />
-				{`The backend connents to my other demo projects, which are built using .Net C#, and GoLang.`}
-				<br />
-				{`An LLM AI demo project is on the way! Please visit `}
-				<a
-					href="https://github.com/onlineeric"
-					target="_blank"
-					rel="noopener noreferrer"
-					style={{ color: theme.palette.mode === 'dark' ? 'lightblue' : 'inherit' }}
-				>
-					my GitHub Repository here.
-				</a>
-			</Typography>
+			<Box sx={{ overflowX: 'auto' }}>
+				<Typography variant="body1" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
+					{`Welcome! This website is my personal demo project, where I, Eric Cheng, to demonstrate my skills of Node.js, React, C#, GoLang and more.`}
+					<br />
+					{`This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.`}
+					<br />
+					{`The backend connents to my other demo projects, which are built using .Net C#, and GoLang.`}
+					<br />
+					{`An LLM AI demo project is on the way! Please visit `}
+					<a
+						href="https://github.com/onlineeric"
+						target="_blank"
+						rel="noopener noreferrer"
+						style={{ color: theme.palette.mode === 'dark' ? 'lightblue' : 'inherit' }}
+					>
+						my GitHub Repository here.
+					</a>
+				</Typography>
+			</Box>
 			<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1 }}>
 				<img src="https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat" alt="React" />
 				<img
