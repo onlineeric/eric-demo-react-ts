@@ -3,6 +3,7 @@ import counterReducer from './counterSlice';
 import loginReducer from './loginSlice';
 import themeReducer from './themeSlice';
 import serverResponsesReducer from './serverResponsesSlice';
+import chatHistoryReducer from './chatHistorySlice';
 
 const store = configureStore({
 	reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
 		login: loginReducer,
 		theme: themeReducer,
 		serverResponses: serverResponsesReducer,
+		chatHistory: chatHistoryReducer,
 	},
 });
 
