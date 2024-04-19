@@ -1,22 +1,7 @@
 import * as React from 'react';
 import { Box, Divider, Fab, Grid, Paper, TextField, Typography } from '@mui/material';
-import { ChatOpenAI } from '@langchain/openai';
-import { ChatPromptTemplate } from '@langchain/core/prompts';
-import { StringOutputParser } from '@langchain/core/output_parsers';
 import SendIcon from '@mui/icons-material/Send';
-
-const chatModel = new ChatOpenAI({
-	apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-	//model: 'gpt-4',
-	temperature: 0.6,
-});
-
-const prompt = ChatPromptTemplate.fromMessages([
-	['system', 'You are a world class technical documentation writer.'],
-	['user', '{input}'],
-]);
-
-const chain = prompt.pipe(chatModel).pipe(new StringOutputParser());
+import { getChatResponse } from '../utils/LangChainLib';
 
 export default function ChatHistoryPanel() {
 	const [userInput, setUserInput] = React.useState('what is LangSmith in AI development?');
@@ -30,18 +15,15 @@ export default function ChatHistoryPanel() {
 	React.useEffect(() => {
 		if (!sendReq) return;
 
-		const getChatResponse = async (userInput: string) => {
-			const chatRes = await chain.invoke({
-				input: userInput,
-			});
-			console.log('chatRes:', chatRes);
-			setChatResponse(chatRes);
+		const fetchChatResponse = async () => {
+			setChatResponse('Loading...');
+			const res = await getChatResponse(userInput);
+			setChatResponse(res); // assuming getChatResponse returns the response you want to display
+			setUserInput('');
+			setSendReq(false);
 		};
 
-		setChatResponse('Loading...');
-		getChatResponse(userInput);
-		setUserInput('');
-		setSendReq(false);
+		fetchChatResponse();
 	}, [sendReq]);
 
 	return (
