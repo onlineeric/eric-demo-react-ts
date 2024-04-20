@@ -3,13 +3,18 @@ import { Box, Fab, Grid, Paper, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useAppDispatch } from '../store/hooks';
 import { addMessage } from '../store/chatHistorySlice';
+import { getChatResponse } from '../utils/LangChainLib';
 
 export default function ChatInputPanel() {
-	const [userInput, setUserInput] = React.useState('what is LangSmith in AI development?');
+	const [userInput, setUserInput] = React.useState('What is RAG in AI development?');
 	const dispatch = useAppDispatch();
 
 	const handleSend = () => {
 		dispatch(addMessage({ speaker: 'User', message: userInput, msgTime: new Date().toLocaleTimeString() }));
+		getChatResponse(userInput).then((res) =>
+			dispatch(addMessage({ speaker: 'ChatGPT', message: res, msgTime: new Date().toLocaleTimeString() })),
+		);
+		setUserInput('');
 	};
 
 	return (
