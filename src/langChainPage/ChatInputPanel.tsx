@@ -31,7 +31,9 @@ export default function ChatInputPanel() {
 					<TextField fullWidth multiline rows={4} value={userInput} onChange={(e) => setUserInput(e.target.value)} />
 				</Grid>
 				<Grid item xs={1}>
-					<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', height: '100%' }}>
+					<Box
+						sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', height: '100%', minWidth: '60px' }}
+					>
 						<Fab color="primary" aria-label="add" onClick={handleSend}>
 							<SendIcon />
 						</Fab>

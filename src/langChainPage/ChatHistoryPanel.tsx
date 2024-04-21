@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { Grid, Paper, TextField } from '@mui/material';
+import { Paper, TextField } from '@mui/material';
 import { useAppSelector } from '../store/hooks';
 import { selectChatHistory } from '../store/chatHistorySlice';
 
 export default function ChatHistoryPanel() {
 	const chatHistory = useAppSelector(selectChatHistory);
+	const [chatHistoryText, setChatHistoryText] = React.useState(''); // eslint-disable-line
+	React.useEffect(() => {
+		setChatHistoryText(chatHistory.map((hist) => hist.message).join());
+	}, [chatHistory]);
 
 	return (
 		<Paper
@@ -15,11 +19,7 @@ export default function ChatHistoryPanel() {
 				height: 300,
 			}}
 		>
-			<Grid container>
-				<Grid item xs={12}>
-					<TextField fullWidth multiline rows={4} value={chatHistory} />
-				</Grid>
-			</Grid>
+			<TextField fullWidth multiline rows={10} value={chatHistoryText} />
 		</Paper>
 	);
 }
