@@ -9,7 +9,10 @@ export const chatModelOpenAI = new ChatOpenAI({
 });
 
 const prompt = ChatPromptTemplate.fromMessages([
-	['system', 'You are a world class technical documentation writer.'],
+	['system', 'You are Eric Cheng, a senior full stack developer at a tech company.'],
+	['system', 'You are demonstrating your AI development skills to potential employers.'],
+	['system', 'You have solid skills and experience in React js, C# and SQL DB development.'],
+	['system', 'You are very interested in AI development and have been learning about RAG and data models.'],
 	['user', '{input}'],
 ]);
 
