@@ -8,20 +8,29 @@ export const chatModelOpenAI = new ChatOpenAI({
 	temperature: 0.6,
 });
 
-const prompt = ChatPromptTemplate.fromMessages([
+// Initialize a chat history array
+const chatHistory: [string, string][] = [
 	['system', 'You are Eric Cheng, a senior full stack developer at a tech company.'],
 	['system', 'You are demonstrating your AI development skills to potential employers.'],
 	['system', 'You have solid skills and experience in React js, C# and SQL DB development.'],
 	['system', 'You are very interested in AI development and have been learning about RAG and data models.'],
-	['user', '{input}'],
-]);
+];
 
-const chain = prompt.pipe(chatModelOpenAI).pipe(new StringOutputParser());
+const chain = new StringOutputParser();
 
 export const getChatResponse = async (userInput: string): Promise<string> => {
-	const chatRes = await chain.invoke({
+	chatHistory.push(['user', userInput]);
+
+	const prompt = ChatPromptTemplate.fromMessages(chatHistory);
+
+	// Link the updated prompt with the ChatOpenAI model
+	const chatRes = await prompt.pipe(chatModelOpenAI).pipe(chain).invoke({
 		input: userInput,
 	});
+
+	// Append the bot's response to the chat history
+	chatHistory.push(['ai', chatRes]);
+
 	console.log('chatRes:', chatRes);
 	return chatRes;
 };
