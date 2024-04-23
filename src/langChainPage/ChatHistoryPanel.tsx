@@ -3,9 +3,9 @@ import { Paper, TextField } from '@mui/material';
 import { useAppSelector } from '../store/hooks';
 import { selectChatHistory } from '../store/chatHistorySlice';
 
-export default function ChatHistoryPanel() {
+const useChatHistory = () => {
 	const chatHistory = useAppSelector(selectChatHistory);
-	const [chatHistoryText, setChatHistoryText] = React.useState(''); // eslint-disable-line
+	const [chatHistoryText, setChatHistoryText] = React.useState('');
 	React.useEffect(() => {
 		setChatHistoryText(
 			chatHistory
@@ -16,6 +16,18 @@ export default function ChatHistoryPanel() {
 				.join(''),
 		);
 	}, [chatHistory]);
+	return chatHistoryText;
+};
+
+export default function ChatHistoryPanel() {
+	const textFieldRef = React.useRef<HTMLTextAreaElement>(null);
+	const chatHistoryText = useChatHistory();
+
+	React.useEffect(() => {
+		if (textFieldRef.current) {
+			textFieldRef.current.scrollTop = textFieldRef.current.scrollHeight;
+		}
+	}, [chatHistoryText]);
 
 	return (
 		<Paper
@@ -26,7 +38,7 @@ export default function ChatHistoryPanel() {
 				height: 300,
 			}}
 		>
-			<TextField fullWidth multiline rows={10} value={chatHistoryText} />
+			<TextField fullWidth multiline rows={10} value={chatHistoryText} inputRef={textFieldRef} />
 		</Paper>
 	);
 }
