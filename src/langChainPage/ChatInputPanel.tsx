@@ -6,7 +6,7 @@ import { addMessage } from '../store/chatHistorySlice';
 import { getChatResponse } from '../utils/LangChainLib';
 
 export default function ChatInputPanel() {
-	const [userInput, setUserInput] = React.useState('What is RAG in AI development?');
+	const [userInput, setUserInput] = React.useState('Who are you? What is RAG in AI development?');
 	const dispatch = useAppDispatch();
 
 	const handleSend = () => {
@@ -23,7 +23,7 @@ export default function ChatInputPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 200,
+				height: 160,
 			}}
 		>
 			<Grid container>
