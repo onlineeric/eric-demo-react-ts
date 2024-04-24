@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Paper, TextField, Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from '@mui/material';
 import { useAppSelector } from '../store/hooks';
-import { selectChatHistory } from '../store/chatHistorySlice';
+import { dataModelList, selectChatHistory } from '../store/chatHistorySlice';
 
 const useChatHistory = () => {
 	const chatHistory = useAppSelector(selectChatHistory);
@@ -22,7 +22,7 @@ const useChatHistory = () => {
 export default function ChatHistoryPanel() {
 	const textFieldRef = React.useRef<HTMLTextAreaElement>(null);
 	const chatHistoryText = useChatHistory();
-	const [dataModel, setDataModel] = React.useState('gpt-3.5-turbo');
+	const [dataModel, setDataModel] = React.useState(dataModelList.gpt3_5t);
 
 	React.useEffect(() => {
 		if (textFieldRef.current) {
@@ -56,8 +56,11 @@ export default function ChatHistoryPanel() {
 					onChange={handleChangeModel}
 					sx={{ mt: 1.2 }}
 				>
-					<MenuItem value={'gpt-3.5-turbo'}>gpt-3.5-turbo</MenuItem>
-					<MenuItem value={'gpt-4'}>gpt-4</MenuItem>
+					{Object.keys(dataModelList).map((key) => (
+						<MenuItem key={key} value={dataModelList[key as keyof typeof dataModelList]}>
+							{dataModelList[key as keyof typeof dataModelList]}
+						</MenuItem>
+					))}
 				</Select>
 			</FormControl>
 		</Paper>
