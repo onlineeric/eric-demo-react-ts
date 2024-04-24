@@ -1,19 +1,21 @@
 import * as React from 'react';
 import { Box, Fab, Grid, Paper, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import { useAppDispatch } from '../store/hooks';
-import { actions } from '../store/chatHistorySlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { actions, selectDataModel, selectTemperture } from '../store/chatHistorySlice';
 import { getChatResponse } from '../utils/LangChainLib';
 
 const { addMessage } = actions;
 
 export default function ChatInputPanel() {
 	const [userInput, setUserInput] = React.useState('Who are you? What is RAG in AI development?');
+	const dataModel = useAppSelector(selectDataModel);
+	const temperture = useAppSelector(selectTemperture);
 	const dispatch = useAppDispatch();
 
 	const handleSend = () => {
 		dispatch(addMessage({ speaker: 'User', message: userInput, msgTime: new Date().toLocaleTimeString() }));
-		getChatResponse(userInput).then((res) =>
+		getChatResponse(userInput, dataModel, temperture).then((res) =>
 			dispatch(addMessage({ speaker: 'ChatGPT', message: res, msgTime: new Date().toLocaleTimeString() })),
 		);
 		setUserInput('');

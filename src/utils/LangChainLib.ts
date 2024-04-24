@@ -2,12 +2,6 @@ import { ChatOpenAI } from '@langchain/openai';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { StringOutputParser } from '@langchain/core/output_parsers';
 
-export const chatModelOpenAI = new ChatOpenAI({
-	apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-	//model: 'gpt-4',
-	temperature: 0.6,
-});
-
 // Initialize a chat history array
 const chatHistory: [string, string][] = [
 	['system', 'You are Eric Cheng, a senior full stack developer at a tech company.'],
@@ -18,10 +12,16 @@ const chatHistory: [string, string][] = [
 
 const chain = new StringOutputParser();
 
-export const getChatResponse = async (userInput: string): Promise<string> => {
+export const getChatResponse = async (userInput: string, dataModel: string, temperature: number): Promise<string> => {
 	chatHistory.push(['user', userInput]);
 
 	const prompt = ChatPromptTemplate.fromMessages(chatHistory);
+
+	const chatModelOpenAI = new ChatOpenAI({
+		apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+		model: dataModel,
+		temperature: temperature,
+	});
 
 	// Link the updated prompt with the ChatOpenAI model
 	const chatRes = await prompt.pipe(chatModelOpenAI).pipe(chain).invoke({
