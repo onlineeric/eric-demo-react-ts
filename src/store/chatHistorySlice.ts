@@ -1,6 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 
+export const dataModelList = {
+	gpt3_5t: 'gpt-3.5-turbo',
+	gpt4: 'gpt-4',
+	gpt4t: 'gpt-4-turbo',
+};
+
 // Define a type for the slice state
 export interface IChatMessageState {
 	speaker: string;
@@ -17,7 +23,7 @@ interface IInitialState {
 // Define the initial state using that type
 const initialState: IInitialState = {
 	messageHistory: [],
-	dataModel: 'gpt-3.5-turbo',
+	dataModel: dataModelList.gpt3_5t,
 	temperture: 0.6,
 };
 
