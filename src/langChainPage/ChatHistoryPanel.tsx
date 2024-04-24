@@ -30,9 +30,12 @@ export default function ChatHistoryPanel() {
 		}
 	}, [chatHistoryText]);
 
-	const handleChangeModel = (event: SelectChangeEvent<string>) => {
-		setDataModel(event.target.value as string);
-	};
+	const handleChangeModel = React.useMemo(
+		() => (event: SelectChangeEvent<string>) => {
+			setDataModel(event.target.value as string);
+		},
+		[],
+	);
 
 	return (
 		<Paper
