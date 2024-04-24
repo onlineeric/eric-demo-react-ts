@@ -48,7 +48,7 @@ export const chatHistorySlice = createSlice({
 	},
 });
 
-export const { addMessage, clearAllHistory } = chatHistorySlice.actions;
+export const actions = chatHistorySlice.actions;
 
 export const selectChatHistory = (state: RootState) => state.chatHistory.messageHistory;
 export const selectDataModel = (state: RootState) => state.chatHistory.dataModel;

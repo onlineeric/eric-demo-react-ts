@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Box, Fab, Grid, Paper, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useAppDispatch } from '../store/hooks';
-import { addMessage } from '../store/chatHistorySlice';
+import { actions } from '../store/chatHistorySlice';
 import { getChatResponse } from '../utils/LangChainLib';
+
+const { addMessage } = actions;
 
 export default function ChatInputPanel() {
 	const [userInput, setUserInput] = React.useState('Who are you? What is RAG in AI development?');
