@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { Paper, TextField, Select, MenuItem, FormControl, InputLabel, Slider, Box, Typography } from '@mui/material';
+import {
+	Paper,
+	TextField,
+	Select,
+	MenuItem,
+	FormControl,
+	InputLabel,
+	Slider,
+	Box,
+	Typography,
+	Button,
+} from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
 	dataModelList,
@@ -38,13 +49,6 @@ export default function ChatHistoryPanel() {
 		}
 	}, [chatHistoryText]);
 
-	// const handleChangeModel = React.useMemo(
-	// 	() => (event: SelectChangeEvent<string>) => {
-	// 		dispatch(actions.setDataModel(event.target.value as string));
-	// 	},
-	// 	[],
-	// );
-
 	return (
 		<Paper
 			sx={{
@@ -72,7 +76,7 @@ export default function ChatHistoryPanel() {
 						))}
 					</Select>
 				</FormControl>
-				<Box sx={{ mt: 1, width: '300px' }}>
+				<Box sx={{ mt: 1, mr: 2, width: '300px' }}>
 					<Typography gutterBottom variant="caption">
 						Temperature
 					</Typography>
@@ -89,6 +93,9 @@ export default function ChatHistoryPanel() {
 						sx={{ mt: 1 }}
 					/>
 				</Box>
+				<Button variant="text" onClick={() => dispatch(actions.clearAllHistory())} sx={{ mt: 2.5 }}>
+					Clear All Messages
+				</Button>
 			</Box>
 		</Paper>
 	);
