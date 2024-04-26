@@ -56,7 +56,7 @@ export const SecondaryListItems = () => {
 	return (
 		<React.Fragment>
 			<ListSubheader component="div" inset>
-				Simple pages
+				Template pages
 			</ListSubheader>
 			{secondaryListItemsData.map((item, index) => (
 				<ListItemButton key={index} onClick={() => handleItemClick(item.route)}>
