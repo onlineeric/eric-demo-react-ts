@@ -17,7 +17,7 @@ export default function DescPanel() {
 		>
 			<Box sx={{ overflowX: 'auto' }}>
 				<Title>Benchmark page</Title>
-				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
+				<Typography variant="body2" sx={{ lineHeight: 1.8, whiteSpace: 'nowrap' }}>
 					{`This page is to demonstrate my full stack development knowledge of Node.js, React, C#, GoLang and more.`}
 					<br />
 					{`Sever Status panel get status from my Azure App Services, which hosts the backend API. Please wait while first time loading (free tier servers, may take a while to wake up).`}

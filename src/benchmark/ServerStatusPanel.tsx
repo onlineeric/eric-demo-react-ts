@@ -68,7 +68,7 @@ export default function ServerStatusPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 300,
+				height: 280,
 			}}
 		>
 			<Title>Server status</Title>

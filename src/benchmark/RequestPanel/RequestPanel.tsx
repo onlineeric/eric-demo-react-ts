@@ -18,7 +18,7 @@ export default function RequestPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 300,
+				height: 280,
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
