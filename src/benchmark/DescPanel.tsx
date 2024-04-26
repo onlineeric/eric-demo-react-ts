@@ -12,19 +12,19 @@ export default function DescPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 220,
+				height: 200,
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
 				<Title>Benchmark page</Title>
-				<Typography variant="body1" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
-					{`Welcome! This website is my personal demo project, where I, Eric Cheng, to demonstrate my skills of Node.js, React, C#, GoLang and more.`}
+				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
+					{`This page is to demonstrate my full stack development knowledge of Node.js, React, C#, GoLang and more.`}
 					<br />
-					{`This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.`}
+					{`Sever Status panel get status from my Azure App Services, which hosts the backend API. Please wait while first time loading (free tier servers, may take a while to wake up).`}
 					<br />
-					{`The backend connents to my other demo projects, which are built using .Net C#, and GoLang.`}
+					{`Request submit to servers send request to my backend APIs, the result will be displayed in the table and the chart below.`}
 					<br />
-					{`An LLM AI demo project is on the way! Please visit `}
+					{`Please send the request and check the comparison result, for my profile please visit `}
 					<a
 						href="https://github.com/onlineeric"
 						target="_blank"
