@@ -12,12 +12,12 @@ export default function DescPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 200,
+				height: 180,
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
 				<Title>LangChain Demo Page</Title>
-				<Typography variant="body1" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
+				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`This page is to demonstrate my knowledge about AI language models and their usage.`}
 					<br />
 					{`Here I used LangChain to connect to my OpenAI API and created a chatbot to interact with users.`}
