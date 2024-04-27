@@ -47,10 +47,45 @@ const ServerStatusBox = ({ children }: { children: React.ReactNode }) => (
 	<Box sx={{ display: 'flex', pt: 1, pb: 1, whiteSpace: 'nowrap' }}>{children}</Box>
 );
 
+function usePatienceWarning(
+	minimalApiStatus: number | null | typeof LOADING_STATUS,
+	controllerApiStatus: number | null | typeof LOADING_STATUS,
+	ginApiStatus: number | null | typeof LOADING_STATUS,
+): boolean {
+	const [patienceWarning, setPatienceWarning] = React.useState(false);
+
+	React.useEffect(() => {
+		// display patience warning if the servers are still loading after a certain time
+		const timeout = setTimeout(() => {
+			if (
+				!patienceWarning &&
+				(minimalApiStatus === LOADING_STATUS ||
+					controllerApiStatus === LOADING_STATUS ||
+					ginApiStatus === LOADING_STATUS)
+			) {
+				setPatienceWarning(true);
+			}
+		}, 2000);
+
+		if (
+			minimalApiStatus !== LOADING_STATUS &&
+			controllerApiStatus !== LOADING_STATUS &&
+			ginApiStatus !== LOADING_STATUS
+		) {
+			clearTimeout(timeout);
+			setPatienceWarning(false);
+		}
+		return () => clearTimeout(timeout);
+	}, [patienceWarning, minimalApiStatus, controllerApiStatus, ginApiStatus]);
+
+	return patienceWarning;
+}
+
 export default function ServerStatusPanel() {
 	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
+	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus);
 
 	const callAPIs = React.useCallback(async () => {
 		setControllerApiStatus(LOADING_STATUS);
@@ -71,7 +106,14 @@ export default function ServerStatusPanel() {
 				height: 280,
 			}}
 		>
-			<Title>Server status</Title>
+			<Box sx={{ display: 'flex' }}>
+				<Title>Server status</Title>
+				{patienceWarning && (
+					<Typography sx={{ m: 1, fontSize: '11px', color: 'red' }}>
+						First time loading may takes 1 - 2 minutes to wake up the Free Tier servers
+					</Typography>
+				)}
+			</Box>
 			<Box sx={{ overflowX: 'auto' }}>
 				<ServerStatusBox>
 					<>Minimal API server (c#): {getStatusResult(minimalApiStatus)}</>
