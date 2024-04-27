@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Grid } from '@mui/material';
 import RequestPanel from './RequestPanel/RequestPanel';
 import ResponsePanel from './ResponsePanel';
-import ServerStatusPanel from './ServerStatusPanel';
+import ServerStatusPanel from './ServerStatusPanel/ServerStatusPanel';
 import ResultChartPanel from './ResultChartPanel';
 import DescPanel from './DescPanel';
 

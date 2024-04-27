@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Box, Button, Paper, TextField } from '@mui/material';
+import { Box, Button, Paper, TextField, Typography } from '@mui/material';
 import Title from '../../common/Title';
 import { getStatusResult } from './getStatusResult';
 import { useCallAPIs } from './useCallAPIs';
+import { usePatienceWarning } from '../usePatienceWarning';
 
 const boxSx = { display: 'flex', pt: 1, pb: 1, whiteSpace: 'nowrap' };
 
@@ -11,6 +12,7 @@ export default function RequestPanel() {
 	const [numIterations, setNumIterations] = React.useState(100);
 	const [sendIterations, setSendIterations] = React.useState<{ iterations: number | null }>({ iterations: null });
 	const [minimalApiStatus, controllerApiStatus, ginApiStatus] = useCallAPIs(sendIterations);
+	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus);
 
 	return (
 		<Paper
@@ -22,7 +24,14 @@ export default function RequestPanel() {
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
-				<Title>Request submit to servers</Title>
+				<Box sx={{ display: 'flex' }}>
+					<Title>Request submit to servers</Title>
+					{patienceWarning && (
+						<Typography sx={{ m: 1, fontSize: '11px', color: 'red' }}>
+							First time loading may takes 1 - 2 minutes to wake up the Free Tier servers
+						</Typography>
+					)}
+				</Box>
 				<Box sx={boxSx}>Minimal API server (c#): {getStatusResult(minimalApiStatus)}</Box>
 				<Box sx={boxSx}>Controller based API server (c#): {getStatusResult(controllerApiStatus)}</Box>
 				<Box sx={boxSx}>Gin API server (Golang): {getStatusResult(ginApiStatus)}</Box>
