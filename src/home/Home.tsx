@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Grid } from '@mui/material';
 import AppDescPanel from './AppDescPanel';
+import BenchmarkDescPanel from './BenchmarkDescPanel';
 
 export default function Home() {
 	return (
@@ -8,6 +9,10 @@ export default function Home() {
 			{/* App Description Panel */}
 			<Grid item xs={12}>
 				<AppDescPanel />
+			</Grid>
+			{/* Benchmark Description Panel */}
+			<Grid item xs={12}>
+				<BenchmarkDescPanel />
 			</Grid>
 		</Grid>
 	);
