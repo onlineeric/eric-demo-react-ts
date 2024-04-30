@@ -12,20 +12,33 @@ export default function AppDescPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 250,
+				height: 350,
 			}}
 		>
 			<Title>Eric Demo Project Site</Title>
 			<Box sx={{ overflowX: 'auto' }}>
-				<Typography variant="body1" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
+				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`Welcome! I'm Eric Cheng, and this website is my personal demo project to showcase my full stack and AI development skills.`}
-					<br />
+				</Typography>
+				<Typography variant="subtitle1" color="primary" sx={{ mt: 1, lineHeight: 2, whiteSpace: 'nowrap' }}>
+					{`About this Single Page App`}
+				</Typography>
+				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.`}
-					<br />
+				</Typography>
+				<Typography variant="subtitle1" color="primary" sx={{ mt: 1, lineHeight: 2, whiteSpace: 'nowrap' }}>
+					{`Benchmark Page`}
+				</Typography>
+				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`The Benchmark page with a backend connents to my Azure App Services(Free Tier), which I built using .Net C#, and GoLang.`}
-					<br />
+				</Typography>
+				<Typography variant="subtitle1" color="primary" sx={{ mt: 1, lineHeight: 2, whiteSpace: 'nowrap' }}>
+					{`LangChain Page`}
+				</Typography>
+				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`The LangChain page features a chatbot that uses LangChain to connect to OpenAI's ChatGPT API.`}
-					<br />
+				</Typography>
+				<Typography variant="body2" sx={{ mt: 1, lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`To view all source code and my information, please visit `}
 					<a
 						href="https://github.com/onlineeric"
