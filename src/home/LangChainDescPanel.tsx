@@ -11,7 +11,7 @@ export default function LangChainDescPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 180,
+				height: 160,
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
