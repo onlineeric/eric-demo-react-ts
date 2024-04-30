@@ -12,19 +12,21 @@ export default function AppDescPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 220,
+				height: 250,
 			}}
 		>
 			<Title>Eric Demo Project Site</Title>
 			<Box sx={{ overflowX: 'auto' }}>
 				<Typography variant="body1" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
-					{`Welcome! This website is my personal demo project, where I, Eric Cheng, to demonstrate my skills of Node.js, React, C#, GoLang and more.`}
+					{`Welcome! I'm Eric Cheng, and this website is my personal demo project to showcase my full stack and AI development skills.`}
 					<br />
 					{`This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.`}
 					<br />
-					{`The backend connents to my other demo projects, which are built using .Net C#, and GoLang.`}
+					{`The Benchmark page with a backend connents to my Azure App Services(Free Tier), which I built using .Net C#, and GoLang.`}
 					<br />
-					{`An LLM AI demo project is on the way! Please visit `}
+					{`The LangChain page features a chatbot that uses LangChain to connect to OpenAI's ChatGPT API.`}
+					<br />
+					{`To view all source code and my information, please visit `}
 					<a
 						href="https://github.com/onlineeric"
 						target="_blank"
@@ -46,9 +48,6 @@ export default function AppDescPanel() {
 					src="https://img.shields.io/badge/-Material--UI-0081CB?logo=material-ui&logoColor=white&style=flat"
 					alt="Material-UI"
 				/>
-				<img src="https://img.shields.io/badge/-C%23-512BD4?logo=.net&logoColor=white" alt=".NET" />
-				<img src="https://img.shields.io/badge/-Minimal%20API-512BD4?logo=.net&logoColor=white" alt="Minimal API" />
-				<img src="https://img.shields.io/badge/-%20Web%20API-512BD4?logo=.net&logoColor=white" alt=".NET Web API" />
 				<img src="https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white" alt="GitHub" />
 				<img
 					src="https://img.shields.io/badge/-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white"
