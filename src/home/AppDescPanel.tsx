@@ -12,7 +12,7 @@ export default function AppDescPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 350,
+				height: 380,
 			}}
 		>
 			<Title>Eric Demo Project Site</Title>
@@ -25,6 +25,17 @@ export default function AppDescPanel() {
 				</Typography>
 				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.`}
+					<br />
+					{`All projects using GitHub Actions to build and deploy to `}
+					<a
+						href="https://hub.docker.com/u/onlineeric"
+						target="_blank"
+						rel="noopener noreferrer"
+						style={{ color: theme.palette.mode === 'dark' ? 'lightblue' : 'inherit' }}
+					>
+						my Docker Hub Repository
+					</a>
+					{` and then my Azure App Service.`}
 				</Typography>
 				<Typography variant="subtitle1" color="primary" sx={{ mt: 1, lineHeight: 2, whiteSpace: 'nowrap' }}>
 					{`Benchmark Page`}
