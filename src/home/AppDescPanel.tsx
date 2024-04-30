@@ -36,6 +36,16 @@ export default function AppDescPanel() {
 						my Docker Hub Repository
 					</a>
 					{` and then my Azure App Service.`}
+					<br />
+					{`To view all source code and my information, please visit `}
+					<a
+						href="https://github.com/onlineeric"
+						target="_blank"
+						rel="noopener noreferrer"
+						style={{ color: theme.palette.mode === 'dark' ? 'lightblue' : 'inherit' }}
+					>
+						my GitHub Repository here.
+					</a>
 				</Typography>
 				<Typography variant="subtitle1" color="primary" sx={{ mt: 1, lineHeight: 2, whiteSpace: 'nowrap' }}>
 					{`Benchmark Page`}
@@ -48,17 +58,6 @@ export default function AppDescPanel() {
 				</Typography>
 				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`The LangChain page features a chatbot that uses LangChain to connect to OpenAI's ChatGPT API.`}
-				</Typography>
-				<Typography variant="body2" sx={{ mt: 1, lineHeight: 1.7, whiteSpace: 'nowrap' }}>
-					{`To view all source code and my information, please visit `}
-					<a
-						href="https://github.com/onlineeric"
-						target="_blank"
-						rel="noopener noreferrer"
-						style={{ color: theme.palette.mode === 'dark' ? 'lightblue' : 'inherit' }}
-					>
-						my GitHub Repository here.
-					</a>
 				</Typography>
 			</Box>
 			<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1 }}>
