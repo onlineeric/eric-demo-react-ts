@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Box, Paper, Typography } from '@mui/material';
 import Title from '../common/Title';
 import { useTheme } from '@mui/material/styles';
+import AppBadges from './AppBadges';
 
 export default function AppDescPanel() {
 	const theme = useTheme();
@@ -60,25 +61,7 @@ export default function AppDescPanel() {
 					{`The LangChain page features a chatbot that uses LangChain to connect to OpenAI's ChatGPT API.`}
 				</Typography>
 			</Box>
-			<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1 }}>
-				<img src="https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat" alt="React" />
-				<img
-					src="https://img.shields.io/badge/-TypeScript-007ACC?logo=typescript&logoColor=white&style=flat"
-					alt="TypeScript"
-				/>
-				<img src="https://img.shields.io/badge/-Redux-764ABC?logo=redux&logoColor=white&style=flat" alt="Redux" />
-				<img
-					src="https://img.shields.io/badge/-Material--UI-0081CB?logo=material-ui&logoColor=white&style=flat"
-					alt="Material-UI"
-				/>
-				<img src="https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white" alt="GitHub" />
-				<img
-					src="https://img.shields.io/badge/-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white"
-					alt="GitHub Actions"
-				/>
-				<img src="https://img.shields.io/badge/-CI%2FCD-5C6BC0?logo=jenkins&logoColor=white" alt="CI/CD" />
-				<img src="https://img.shields.io/badge/-Azure-0089D6?logo=microsoft-azure&logoColor=white" alt="Azure" />
-			</Box>
+			<AppBadges />
 		</Paper>
 	);
 }
