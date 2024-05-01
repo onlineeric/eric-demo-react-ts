@@ -4,7 +4,6 @@ Welcome! I'm Eric Cheng, this repository is my personal demo project to showcase
 This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.
 The backend connented to my other demo projects, which are built using .Net C#, and GoLang.  
 
-For this Recat Project, I have used the following technologies:  
 ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?logo=typescript&logoColor=white&style=flat)
 ![Redux](https://img.shields.io/badge/-Redux-764ABC?logo=redux&logoColor=white&style=flat)
