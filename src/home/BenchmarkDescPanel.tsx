@@ -11,7 +11,7 @@ export default function DescPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 210,
+				height: 240,
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
