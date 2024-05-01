@@ -1,7 +1,7 @@
 # Eric Demo Project Site
-Welcome! This repository is a personal project, where I, Eric Cheng, am demonstrating my Node Js React and web frontend knowledge.
+Welcome! I'm Eric Cheng, this repository is my personal demo project to showcase my full stack and AI development skills.
 
-This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.  
+This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.
 The backend connented to my other demo projects, which are built using .Net C#, and GoLang.  
 
 For this Recat Project, I have used the following technologies:  
@@ -31,8 +31,10 @@ ESLint and Prettier are integrated to ensure consistent code formatting and to h
 
 You can view a live demo of a project built using this template at my [Eric Demo Site](https://agreeable-water-061d90800.5.azurestaticapps.net)
 
-Here's a screenshot of the demo site:
-![Demo Site Screenshot](public/Eric%20Demo%20Site%20-%20screenshot.png)
+Here are screenshots of the demo site:
+![Demo Site Screenshot](public/Eric%20Demo%20Site%20-%20screenshot1.png)  
+
+![Demo Site Screenshot](public/Eric%20Demo%20Site%20-%20screenshot2.png)
 
 ## Getting Started on local
 
