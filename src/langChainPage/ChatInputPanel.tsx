@@ -13,13 +13,13 @@ export default function ChatInputPanel() {
 	const temperture = useAppSelector(selectTemperture);
 	const dispatch = useAppDispatch();
 
-	const handleSend = () => {
+	const handleSend = React.useCallback(() => {
 		dispatch(addMessage({ speaker: 'User', message: userInput, msgTime: new Date().toLocaleTimeString() }));
 		getChatResponse(userInput, dataModel, temperture).then((res) =>
 			dispatch(addMessage({ speaker: 'ChatGPT', message: res, msgTime: new Date().toLocaleTimeString() })),
 		);
 		setUserInput('');
-	};
+	}, [dispatch, userInput, dataModel, temperture]);
 
 	return (
 		<Paper
