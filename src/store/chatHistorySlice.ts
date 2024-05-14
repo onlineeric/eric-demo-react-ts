@@ -5,6 +5,7 @@ export const dataModelList = {
 	gpt3_5t: 'gpt-3.5-turbo',
 	gpt4: 'gpt-4',
 	gpt4t: 'gpt-4-turbo',
+	gpt4o: 'gpt-4o',
 };
 
 // Define a type for the slice state
@@ -23,7 +24,7 @@ interface IInitialState {
 // Define the initial state using that type
 const initialState: IInitialState = {
 	messageHistory: [],
-	dataModel: dataModelList.gpt3_5t,
+	dataModel: dataModelList.gpt4o,
 	temperture: 0.6,
 };
 
