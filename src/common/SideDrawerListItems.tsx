@@ -14,8 +14,9 @@ import { useNavigate } from 'react-router-dom';
 const mainListItemsData = [
 	{ icon: HomeIcon, text: 'Home', route: '/home' },
 	{ icon: SpeedIcon, text: 'Benchmark', route: '/benchmark' },
-	{ icon: LinkIcon, text: 'LangChain', route: '/langchaindemo' },
 ];
+
+const aiPageData = [{ icon: LinkIcon, text: 'LangChain', route: '/langchaindemo' }];
 
 const secondaryListItemsData = [
 	{ icon: DashboardIcon, text: 'Dashboard', route: '/dashboard' },
@@ -37,6 +38,31 @@ export const MainListItems = () => {
 				Full Stack Skills Demo
 			</ListSubheader>
 			{mainListItemsData.map((item, index) => (
+				<ListItemButton key={index} onClick={() => handleItemClick(item.route)}>
+					<ListItemIcon>
+						<item.icon />
+					</ListItemIcon>
+					<ListItemText primary={item.text} />
+				</ListItemButton>
+			))}
+		</React.Fragment>
+	);
+};
+
+export const AiPageItems = () => {
+	const navigate = useNavigate();
+	const handleItemClick = (route: string | undefined) => {
+		if (route) {
+			navigate(route);
+		}
+	};
+
+	return (
+		<React.Fragment>
+			<ListSubheader component="div" inset sx={{ pl: 2 }}>
+				AI LLM Demo Pages
+			</ListSubheader>
+			{aiPageData.map((item, index) => (
 				<ListItemButton key={index} onClick={() => handleItemClick(item.route)}>
 					<ListItemIcon>
 						<item.icon />
