@@ -16,7 +16,10 @@ const mainListItemsData = [
 	{ icon: SpeedIcon, text: 'Benchmark', route: '/benchmark' },
 ];
 
-const aiPageData = [{ icon: LinkIcon, text: 'LangChain', route: '/langchaindemo' }];
+const aiPageData = [
+	{ icon: LinkIcon, text: 'LangChain', route: '/langchaindemo' },
+	{ icon: LinkIcon, text: 'Fine Tuning', route: '/fineTuningDemo' },
+];
 
 const secondaryListItemsData = [
 	{ icon: DashboardIcon, text: 'Dashboard', route: '/dashboard' },
