@@ -33,6 +33,9 @@ export const MainListItems = () => {
 
 	return (
 		<React.Fragment>
+			<ListSubheader component="div" inset sx={{ pl: 2 }}>
+				Full Stack Skills Demo
+			</ListSubheader>
 			{mainListItemsData.map((item, index) => (
 				<ListItemButton key={index} onClick={() => handleItemClick(item.route)}>
 					<ListItemIcon>
