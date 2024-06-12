@@ -6,6 +6,8 @@ import ListSubheader from '@mui/material/ListSubheader';
 import HomeIcon from '@mui/icons-material/Home';
 import SpeedIcon from '@mui/icons-material/Speed';
 import LinkIcon from '@mui/icons-material/Link';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import FindReplaceIcon from '@mui/icons-material/FindReplace';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
@@ -18,7 +20,8 @@ const mainListItemsData = [
 
 const aiPageData = [
 	{ icon: LinkIcon, text: 'LangChain', route: '/langchaindemo' },
-	{ icon: LinkIcon, text: 'Fine Tuning', route: '/fineTuningDemo' },
+	{ icon: PsychologyIcon, text: 'Fine Tuning', route: '/fineTuningDemo' },
+	{ icon: FindReplaceIcon, text: 'RAG', route: '/ragDemo' },
 ];
 
 const secondaryListItemsData = [

@@ -9,6 +9,7 @@ import SignIn from '../login/SignIn';
 import Home from '../home/Home';
 import Benchmark from '../benchmark/Benchmark';
 import FineTuningPage from '../fineTuningPage/FineTuningPage';
+import RagPage from '../ragPage/RagPage';
 
 // Logoff component
 const Logoff = () => {
@@ -25,6 +26,7 @@ export const authRoutes = [
 	{ path: '/benchmark', element: <Benchmark />, title: 'Benchmark' },
 	{ path: '/langchaindemo', element: <LangChainPage />, title: 'LangChain Demo' },
 	{ path: '/fineTuningDemo', element: <FineTuningPage />, title: 'Fine Tuning Demo' },
+	{ path: '/ragDemo', element: <RagPage />, title: 'RAG Demo' },
 	{ path: '/dashboard', element: <Dashboard />, title: 'Dashboard' },
 	{ path: '/orders', element: <Orders />, title: 'Orders' },
 	{ path: '/status', element: <div>status page</div>, title: 'Status' },
