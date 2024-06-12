@@ -53,7 +53,16 @@ export default function AppDescPanel() {
 						rel="noopener noreferrer"
 						style={{ color: theme.palette.mode === 'dark' ? 'lightblue' : 'inherit' }}
 					>
-						my GitHub Repository here.
+						my GitHub Repository here
+					</a>
+					{` and `}
+					<a
+						href="https://huggingface.co/onlineeric"
+						target="_blank"
+						rel="noopener noreferrer"
+						style={{ color: theme.palette.mode === 'dark' ? 'lightblue' : 'inherit' }}
+					>
+						my Hugging Face Repository here
 					</a>
 				</Body2>
 				<Subtitle>{`Benchmark Page`}</Subtitle>
