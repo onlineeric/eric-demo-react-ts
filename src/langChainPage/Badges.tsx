@@ -18,7 +18,7 @@ export default function Badges() {
 				alt="OpenAI"
 			/>
 			<StyledImg
-				src="https://img.shields.io/badge/-ChatGPT-512BD4?logo=chatgpt&logoColor=white&style=flat"
+				src="https://img.shields.io/badge/-ChatGPT-512BD4?logo=openai&logoColor=white&style=flat"
 				alt="ChatGPT"
 			/>{' '}
 		</Box>
