@@ -6,6 +6,7 @@ export const dataModelList = {
 	gpt4: 'gpt-4',
 	gpt4t: 'gpt-4-turbo',
 	gpt4o: 'gpt-4o',
+	gpt4omini: 'gpt-4o-mini',
 };
 
 // Define a type for the slice state
