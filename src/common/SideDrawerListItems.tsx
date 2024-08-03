@@ -20,8 +20,8 @@ const mainListItemsData = [
 
 const aiPageData = [
 	{ icon: LinkIcon, text: 'LangChain', route: '/langchaindemo' },
-	{ icon: PsychologyIcon, text: 'Fine Tuning', route: '/fineTuningDemo' },
 	{ icon: FindReplaceIcon, text: 'RAG', route: '/ragDemo' },
+	{ icon: PsychologyIcon, text: 'Fine Tuning', route: '/fineTuningDemo' },
 ];
 
 const secondaryListItemsData = [
