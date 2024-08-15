@@ -3,6 +3,8 @@ import { Grid } from '@mui/material';
 import AppDescPanel from './AppDescPanel';
 import BenchmarkDescPanel from './BenchmarkDescPanel';
 import PromptEngineeringDescPanel from './PromptEngineeringDescPanel';
+import RagDescPanel from './RagDescPanel';
+import FineTuningDescPanel from './FineTuningDescPanel';
 
 export default function Home() {
 	return (
@@ -18,6 +20,12 @@ export default function Home() {
 			{/* Prompt Engineering Description Panel */}
 			<Grid item xs={12}>
 				<PromptEngineeringDescPanel />
+			</Grid>
+			<Grid item xs={12}>
+				<RagDescPanel />
+			</Grid>
+			<Grid item xs={12}>
+				<FineTuningDescPanel />
 			</Grid>
 		</Grid>
 	);

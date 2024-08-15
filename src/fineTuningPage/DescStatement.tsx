@@ -3,7 +3,8 @@ import { Typography } from '@mui/material';
 
 const DescText = [
 	`This page is to demonstrate my knowledge about Fine Tuning LLM data model.`,
-	`This page is in construction, please come back later.`,
+	`Please visit my Hugging Face repo for my fine tuned LLM model.`,
+	`This page is in construction, will update more information soon.`,
 ];
 
 export default function DescStatement() {

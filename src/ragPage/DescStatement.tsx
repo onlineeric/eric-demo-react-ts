@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 
 const DescText = [
 	`This page is to demonstrate my knowledge about Retrieval Augmented Generation with LLM.`,
-	`This page is in construction, please come back later.`,
+	`This page is in construction, will be updated soon.`,
 ];
 
 export default function DescStatement() {

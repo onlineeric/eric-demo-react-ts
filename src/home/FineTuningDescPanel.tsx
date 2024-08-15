@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { Box, Paper } from '@mui/material';
 import Title from '../common/Title';
-import Badges from '../promptEngineeringPage/Badges';
-import DescStatement from '../promptEngineeringPage/DescStatement';
+import Badges from '../fineTuningPage/Badges';
+import DescStatement from '../fineTuningPage/DescStatement';
 
-export default function PromptEngineeringDescPanel() {
+export default function FineTuningDescPanel() {
 	return (
 		<Paper
 			sx={{
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 210,
+				height: 190,
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
-				<Title>Prompt Engineering Demo Page</Title>
+				<Title>Fine Tuning Demo Page</Title>
 				<DescStatement />
 				<Badges />
 			</Box>
