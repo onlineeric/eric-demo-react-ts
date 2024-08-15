@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Grid } from '@mui/material';
 import AppDescPanel from './AppDescPanel';
 import BenchmarkDescPanel from './BenchmarkDescPanel';
-import LangChainDescPanel from './LangChainDescPanel';
+import PromptEngineeringDescPanel from './PromptEngineeringDescPanel';
 
 export default function Home() {
 	return (
@@ -15,9 +15,9 @@ export default function Home() {
 			<Grid item xs={12}>
 				<BenchmarkDescPanel />
 			</Grid>
-			{/* LangChain Description Panel */}
+			{/* Prompt Engineering Description Panel */}
 			<Grid item xs={12}>
-				<LangChainDescPanel />
+				<PromptEngineeringDescPanel />
 			</Grid>
 		</Grid>
 	);

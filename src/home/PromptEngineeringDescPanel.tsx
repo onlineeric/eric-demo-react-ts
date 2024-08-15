@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Box, Paper } from '@mui/material';
 import Title from '../common/Title';
-import Badges from '../langChainPage/Badges';
-import DescStatement from '../langChainPage/DescStatement';
+import Badges from '../promptEngineeringPage/Badges';
+import DescStatement from '../promptEngineeringPage/DescStatement';
 
-export default function LangChainDescPanel() {
+export default function PromptEngineeringDescPanel() {
 	return (
 		<Paper
 			sx={{
@@ -15,7 +15,7 @@ export default function LangChainDescPanel() {
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
-				<Title>LangChain Demo Page</Title>
+				<Title>Prompt Engineering Demo Page</Title>
 				<DescStatement />
 				<Badges />
 			</Box>

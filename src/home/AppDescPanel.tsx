@@ -67,8 +67,8 @@ export default function AppDescPanel() {
 				</Body2>
 				<Subtitle>{`Benchmark Page`}</Subtitle>
 				<Body2>{`The Benchmark page with a backend connents to my Azure App Services(Free Tier), which I built using .Net C#, and GoLang.`}</Body2>
-				<Subtitle>{`LangChain Page`}</Subtitle>
-				<Body2>{`The LangChain page features a chatbot that uses LangChain to connect to OpenAI's ChatGPT API.`}</Body2>
+				<Subtitle>{`Prompt Engineering Page`}</Subtitle>
+				<Body2>{`The Prompt Engineering page features a chatbot that connent to OpenAI's ChatGPT API with Prompt Engineering.`}</Body2>
 			</Box>
 			<AppBadges />
 		</Paper>

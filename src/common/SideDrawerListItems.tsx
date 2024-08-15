@@ -19,7 +19,7 @@ const mainListItemsData = [
 ];
 
 const aiPageData = [
-	{ icon: LinkIcon, text: 'LangChain', route: '/langchaindemo' },
+	{ icon: LinkIcon, text: 'Prompt Engineering', route: '/promptEngineeringDemo' },
 	{ icon: FindReplaceIcon, text: 'RAG', route: '/ragDemo' },
 	{ icon: PsychologyIcon, text: 'Fine Tuning', route: '/fineTuningDemo' },
 ];

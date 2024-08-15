@@ -18,7 +18,7 @@ export default function DescPanel() {
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
-				<Title>LangChain Demo Page</Title>
+				<Title>Prompt Engineering Demo Page</Title>
 				<DescStatement />
 				<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 					{`Please visit `}

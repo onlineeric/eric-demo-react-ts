@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Dashboard from '../dashboard/Dashboard';
-import LangChainPage from '../langChainPage/LangChainPage';
+import PromptEngineeringPage from '../promptEngineeringPage/PromptEngineeringPage';
 import Orders from '../orders/Orders';
 import { Navigate } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
@@ -24,7 +24,7 @@ const Logoff = () => {
 export const authRoutes = [
 	{ path: '/home', element: <Home />, title: 'Home' },
 	{ path: '/benchmark', element: <Benchmark />, title: 'Benchmark' },
-	{ path: '/langchaindemo', element: <LangChainPage />, title: 'LangChain Demo' },
+	{ path: '/promptEngineeringDemo', element: <PromptEngineeringPage />, title: 'Prompt Engineering Demo' },
 	{ path: '/fineTuningDemo', element: <FineTuningPage />, title: 'Fine Tuning Demo' },
 	{ path: '/ragDemo', element: <RagPage />, title: 'RAG Demo' },
 	{ path: '/dashboard', element: <Dashboard />, title: 'Dashboard' },

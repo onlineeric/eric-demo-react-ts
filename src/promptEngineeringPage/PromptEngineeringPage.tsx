@@ -4,7 +4,7 @@ import DescPanel from './DescPanel';
 import ChatHistoryPanel from './ChatHistoryPanel';
 import ChatInputPanel from './ChatInputPanel';
 
-export default function LangChainPage() {
+export default function PromptEngineeringPage() {
 	return (
 		<Grid container spacing={3}>
 			{/* Description Panel */}
