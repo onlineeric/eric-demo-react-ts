@@ -31,6 +31,5 @@ export const getChatResponse = async (userInput: string, dataModel: string, temp
 	// Append the bot's response to the chat history
 	chatHistory.push(['ai', chatRes]);
 
-	console.log('chatRes:', chatRes);
 	return chatRes;
 };
