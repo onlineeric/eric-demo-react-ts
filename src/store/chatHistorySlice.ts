@@ -45,8 +45,8 @@ export const chatHistorySlice = createSlice({
 
 export const actions = chatHistorySlice.actions;
 
-export const selectChatHistory = (state: RootState) => state.ragChatHistory.messageHistory;
-export const selectDataModel = (state: RootState) => state.ragChatHistory.dataModel;
-export const selectTemperture = (state: RootState) => state.ragChatHistory.temperture;
+export const selectChatHistory = (state: RootState) => state.chatHistory.messageHistory;
+export const selectDataModel = (state: RootState) => state.chatHistory.dataModel;
+export const selectTemperture = (state: RootState) => state.chatHistory.temperture;
 
 export default chatHistorySlice.reducer;
