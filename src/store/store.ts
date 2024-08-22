@@ -4,6 +4,7 @@ import loginReducer from './loginSlice';
 import themeReducer from './themeSlice';
 import serverResponsesReducer from './serverResponsesSlice';
 import chatHistoryReducer from './chatHistorySlice';
+import ragChatHistoryReducer from './ragChatHistorySlice';
 
 const store = configureStore({
 	reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
 		theme: themeReducer,
 		serverResponses: serverResponsesReducer,
 		chatHistory: chatHistoryReducer,
+		ragChatHistory: ragChatHistoryReducer,
 	},
 });
 

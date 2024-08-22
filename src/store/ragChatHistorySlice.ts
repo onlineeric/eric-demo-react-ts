@@ -3,14 +3,14 @@ import type { RootState } from './store';
 import { dataModelList } from '../utils/storeLib';
 
 // Define a type for the slice state
-export interface IChatMessageState {
+export interface IRagChatMessageState {
 	speaker: string;
 	message: string;
 	msgTime: string;
 }
 
 interface IInitialState {
-	messageHistory: IChatMessageState[];
+	messageHistory: IRagChatMessageState[];
 	dataModel: string;
 	temperture: number;
 }
@@ -22,13 +22,13 @@ const initialState: IInitialState = {
 	temperture: 0.6,
 };
 
-export const chatHistorySlice = createSlice({
-	name: 'chatHistory',
+export const ragChatHistorySlice = createSlice({
+	name: 'ragChatHistory',
 	// `createSlice` will infer the state type from the `initialState` argument
 	initialState,
 	reducers: {
 		// Use the PayloadAction type to declare the contents of `action.payload`
-		addMessage: (state, action: PayloadAction<IChatMessageState>) => {
+		addMessage: (state, action: PayloadAction<IRagChatMessageState>) => {
 			state.messageHistory.push(action.payload);
 		},
 		clearAllHistory: (state) => {
@@ -43,10 +43,10 @@ export const chatHistorySlice = createSlice({
 	},
 });
 
-export const actions = chatHistorySlice.actions;
+export const actions = ragChatHistorySlice.actions;
 
-export const selectChatHistory = (state: RootState) => state.ragChatHistory.messageHistory;
+export const selectRagChatHistory = (state: RootState) => state.ragChatHistory.messageHistory;
 export const selectDataModel = (state: RootState) => state.ragChatHistory.dataModel;
 export const selectTemperture = (state: RootState) => state.ragChatHistory.temperture;
 
-export default chatHistorySlice.reducer;
+export default ragChatHistorySlice.reducer;

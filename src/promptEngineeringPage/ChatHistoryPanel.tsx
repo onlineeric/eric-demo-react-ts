@@ -12,13 +12,8 @@ import {
 	Button,
 } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import {
-	dataModelList,
-	selectChatHistory,
-	selectDataModel,
-	actions,
-	selectTemperture,
-} from '../store/chatHistorySlice';
+import { selectChatHistory, selectDataModel, actions, selectTemperture } from '../store/chatHistorySlice';
+import { dataModelList } from '../utils/storeLib';
 
 const useChatHistory = () => {
 	const chatHistory = useAppSelector(selectChatHistory);
