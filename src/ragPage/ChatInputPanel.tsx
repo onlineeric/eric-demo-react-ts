@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Box, Fab, Grid, Paper, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { actions, selectDataModel, selectTemperture } from '../store/chatHistorySlice';
+import { actions, selectDataModel, selectTemperture } from '../store/ragChatHistorySlice';
 import { getChatResponse } from '../utils/LangChainLib';
 
 const { addMessage } = actions;

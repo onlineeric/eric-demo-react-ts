@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Grid } from '@mui/material';
 import DescPanel from './DescPanel';
 // import ChatHistoryPanel from './ChatHistoryPanel';
-// import ChatInputPanel from './ChatInputPanel';
+import ChatInputPanel from './ChatInputPanel';
 
 export default function RagPage() {
 	return (
@@ -13,10 +13,10 @@ export default function RagPage() {
 			</Grid>
 			{/* <Grid item xs={12}>
 				<ChatHistoryPanel />
-			</Grid>
+			</Grid> */}
 			<Grid item xs={12}>
 				<ChatInputPanel />
-			</Grid> */}
+			</Grid>
 		</Grid>
 	);
 }
