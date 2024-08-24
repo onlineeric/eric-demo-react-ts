@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { actions, selectDataModel, selectTemperture } from '../store/ragChatHistorySlice';
 import { getChatResponse } from '../utils/LangChainLib';
 import { OpenAI } from 'openai';
+import { TextContentBlock } from 'openai/resources/beta/threads/messages';
 
 const { addMessage } = actions;
 const openai = new OpenAI({
@@ -13,7 +14,7 @@ const openai = new OpenAI({
 });
 
 export default function ChatInputPanel() {
-	const [userInput, setUserInput] = React.useState('How long does it take to cook a fish?');
+	const [userInput, setUserInput] = React.useState('How long does Brabantia Pressure Cooker take to cook meat?');
 	const dataModel = useAppSelector(selectDataModel);
 	const temperture = useAppSelector(selectTemperture);
 	const dispatch = useAppDispatch();
@@ -33,15 +34,14 @@ export default function ChatInputPanel() {
 			});
 			const run = await openai.beta.threads.runs.createAndPoll(resThread.id, {
 				assistant_id: resAss.id,
-				instructions: 'Respond to user question',
 			});
 			if (run.status === 'completed') {
 				const messages = await openai.beta.threads.messages.list(run.thread_id);
 				for (const message of messages.data.reverse()) {
-					console.log(`${message.role} > ${message.content[0]}`);
+					console.log(`${message.role} > ${(message.content[0] as TextContentBlock).text.value}`);
 				}
 			} else {
-				console.log(run.status);
+				console.log('status:', run.status);
 			}
 		};
 		runAsync();
