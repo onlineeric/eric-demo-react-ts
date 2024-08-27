@@ -3,6 +3,7 @@ import { Grid } from '@mui/material';
 import DescPanel from './DescPanel';
 // import ChatHistoryPanel from './ChatHistoryPanel';
 import ChatInputPanel from './ChatInputPanel';
+import ChatHistoryPanel from './ChatHistoryPanel';
 
 export default function RagPage() {
 	return (
@@ -11,9 +12,9 @@ export default function RagPage() {
 			<Grid item xs={12}>
 				<DescPanel />
 			</Grid>
-			{/* <Grid item xs={12}>
+			<Grid item xs={12}>
 				<ChatHistoryPanel />
-			</Grid> */}
+			</Grid>
 			<Grid item xs={12}>
 				<ChatInputPanel />
 			</Grid>

@@ -3,15 +3,36 @@ import { Box, Fab, Grid, Paper, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { actions, selectDataModel, selectTemperture } from '../store/ragChatHistorySlice';
-import { getChatResponse } from '../utils/LangChainLib';
 import { OpenAI } from 'openai';
 import { TextContentBlock } from 'openai/resources/beta/threads/messages';
+import { openai } from '../utils/OpenAiLib';
+import { Thread } from 'openai/resources/beta/threads/threads';
+import { Assistant } from 'openai/resources/beta/assistants';
 
 const { addMessage } = actions;
-const openai = new OpenAI({
-	apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-	dangerouslyAllowBrowser: true,
-});
+
+const getResponse = async (thread: Thread, userInput: string, assistant: Assistant) => {
+	let resResult = '';
+	console.log('thread', thread);
+	if (thread) {
+		await openai.beta.threads.messages.create(thread!.id, {
+			role: 'user',
+			content: userInput,
+		});
+		const run = await openai.beta.threads.runs.createAndPoll(thread!.id, {
+			assistant_id: assistant!.id,
+		});
+		if (run.status === 'completed') {
+			const messages = await openai.beta.threads.messages.list(run.thread_id);
+			for (const message of messages.data.reverse()) {
+				resResult = (message.content[0] as TextContentBlock).text.value;
+			}
+		} else {
+			resResult = `Sorry, OpenAI API responsed with an error, status is ${run.status}. Please try again.`;
+		}
+	}
+	return resResult;
+};
 
 export default function ChatInputPanel() {
 	const [userInput, setUserInput] = React.useState('How long does Brabantia Pressure Cooker take to cook meat?');
@@ -19,41 +40,24 @@ export default function ChatInputPanel() {
 	const temperture = useAppSelector(selectTemperture);
 	const dispatch = useAppDispatch();
 
-	const [assistant, setAssistant] = React.useState<OpenAI.Beta.Assistants.Assistant | null>(null); // eslint-disable-line @typescript-eslint/no-unused-vars
-	const [thread, setThread] = React.useState<OpenAI.Beta.Thread | null>(null); // eslint-disable-line @typescript-eslint/no-unused-vars
+	const [assistant, setAssistant] = React.useState<OpenAI.Beta.Assistants.Assistant | null>(null);
+	const [thread, setThread] = React.useState<OpenAI.Beta.Thread | null>(null);
 
 	React.useEffect(() => {
-		const runAsync = async () => {
-			const resAss = await openai.beta.assistants.retrieve('asst_HPYYWe9uIJjAZjSNSVdrByXn');
-			setAssistant(resAss);
-			const resThread = await openai.beta.threads.create();
-			setThread(resThread);
-			await openai.beta.threads.messages.create(resThread.id, {
-				role: 'user',
-				content: userInput,
-			});
-			const run = await openai.beta.threads.runs.createAndPoll(resThread.id, {
-				assistant_id: resAss.id,
-			});
-			if (run.status === 'completed') {
-				const messages = await openai.beta.threads.messages.list(run.thread_id);
-				for (const message of messages.data.reverse()) {
-					console.log(`${message.role} > ${(message.content[0] as TextContentBlock).text.value}`);
-				}
-			} else {
-				console.log('status:', run.status);
-			}
-		};
-		runAsync();
+		openai.beta.assistants.retrieve('asst_HPYYWe9uIJjAZjSNSVdrByXn').then((res) => setAssistant(res));
+		openai.beta.threads.create().then((res) => {
+			console.log('create thread', res);
+			setThread(res);
+		});
 	}, []);
 
 	const handleSend = React.useCallback(() => {
 		dispatch(addMessage({ speaker: 'User', message: userInput, msgTime: new Date().toLocaleTimeString() }));
-		getChatResponse(userInput, dataModel, temperture).then((res) =>
+		getResponse(thread!, userInput, assistant!).then((res) =>
 			dispatch(addMessage({ speaker: 'ChatGPT', message: res, msgTime: new Date().toLocaleTimeString() })),
 		);
 		setUserInput('');
-	}, [dispatch, userInput, dataModel, temperture]);
+	}, [dispatch, addMessage, thread, userInput, assistant, dataModel, temperture]);
 
 	return (
 		<Paper
