@@ -12,7 +12,13 @@ import {
 	Button,
 } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { selectRagChatHistory, selectDataModel, actions, selectTemperture } from '../store/ragChatHistorySlice';
+import {
+	selectRagChatHistory,
+	selectDataModel,
+	actions,
+	selectTemperture,
+	selectAssistant,
+} from '../store/ragChatHistorySlice';
 import { dataModelList } from '../utils/storeLib';
 
 const useChatHistory = () => {
@@ -36,6 +42,7 @@ export default function ChatHistoryPanel() {
 	const chatHistoryText = useChatHistory();
 	const dataModel = useAppSelector(selectDataModel);
 	const temperture = useAppSelector(selectTemperture);
+	const assistant = useAppSelector(selectAssistant);
 	const dispatch = useAppDispatch();
 
 	React.useEffect(() => {
@@ -43,6 +50,20 @@ export default function ChatHistoryPanel() {
 			textFieldRef.current.scrollTop = textFieldRef.current.scrollHeight;
 		}
 	}, [chatHistoryText]);
+
+	const setTemperature = React.useCallback(
+		(newTemperture: number) => {
+			dispatch(actions.setTemperture(newTemperture));
+		},
+		[dispatch, assistant],
+	);
+
+	const setDataModel = React.useCallback(
+		(newDataModel: string) => {
+			dispatch(actions.setDataModel(newDataModel));
+		},
+		[dispatch, assistant],
+	);
 
 	return (
 		<Paper
@@ -61,7 +82,7 @@ export default function ChatHistoryPanel() {
 						labelId="model-select-label"
 						id="model-select"
 						value={dataModel}
-						onChange={(e) => dispatch(actions.setDataModel(e.target.value as string))}
+						onChange={(e) => setDataModel(e.target.value as string)}
 						sx={{ mt: 1.2 }}
 					>
 						{Object.keys(dataModelList).map((key) => (
@@ -78,7 +99,7 @@ export default function ChatHistoryPanel() {
 					<Slider
 						aria-label="Temperature"
 						value={temperture}
-						onChange={(e, value) => dispatch(actions.setTemperture(value as number))}
+						onChange={(e, value) => setTemperature(value as number)}
 						valueLabelDisplay="auto"
 						shiftStep={0.1}
 						step={0.1}
