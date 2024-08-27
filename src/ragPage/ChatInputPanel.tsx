@@ -2,12 +2,17 @@ import * as React from 'react';
 import { Box, Fab, Grid, Paper, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { actions, selectAssistant, selectTemperture, selectThread } from '../store/ragChatHistorySlice';
+import {
+	actions,
+	selectAssistant,
+	selectTemperture,
+	selectDataModel,
+	selectThread,
+} from '../store/ragChatHistorySlice';
 import { TextContentBlock } from 'openai/resources/beta/threads/messages';
 import { openai } from '../utils/OpenAiLib';
 import { Thread } from 'openai/resources/beta/threads/threads';
 import { Assistant } from 'openai/resources/beta/assistants';
-import { selectDataModel } from '../store/chatHistorySlice';
 
 const { addMessage, setAssistant, setThread } = actions;
 
