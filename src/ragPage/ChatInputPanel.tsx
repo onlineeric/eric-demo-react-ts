@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Fab, Grid, Paper, TextField } from '@mui/material';
+import { Box, Fab, Grid, Paper, TextField, CircularProgress } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
@@ -41,6 +41,7 @@ const getResponse = async (thread: Thread, userInput: string, assistant: Assista
 
 export default function ChatInputPanel() {
 	const [userInput, setUserInput] = React.useState('How long does it take to cook a fish?');
+	const [isLoading, setIsLoading] = React.useState(false);
 	const dispatch = useAppDispatch();
 	const assistant = useAppSelector(selectAssistant);
 	const thread = useAppSelector(selectThread);
@@ -57,7 +58,7 @@ export default function ChatInputPanel() {
 	}, [assistant, thread, dispatch]);
 
 	const handleSend = React.useCallback(async () => {
-		if (!thread || !assistant) return;
+		if (!thread || !assistant || !userInput.trim()) return;
 		dispatch(addMessage({ speaker: 'User', message: userInput, msgTime: new Date().toLocaleTimeString() }));
 		if (assistant && (assistant?.temperature !== tempature || assistant?.model !== dataModel)) {
 			const updatedAssistant = await openai.beta.assistants.update(assistant.id, {
@@ -66,9 +67,11 @@ export default function ChatInputPanel() {
 			});
 			dispatch(actions.setAssistant(updatedAssistant));
 		}
-		getResponse(thread!, userInput, assistant!).then((res) =>
-			dispatch(addMessage({ speaker: 'ChatGPT', message: res, msgTime: new Date().toLocaleTimeString() })),
-		);
+		setIsLoading(true);
+		getResponse(thread!, userInput, assistant!).then((res) => {
+			dispatch(addMessage({ speaker: 'ChatGPT', message: res, msgTime: new Date().toLocaleTimeString() }));
+			setIsLoading(false);
+		});
 		setUserInput('');
 	}, [dispatch, thread, userInput, assistant, tempature, dataModel]);
 
@@ -89,8 +92,8 @@ export default function ChatInputPanel() {
 					<Box
 						sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', height: '100%', minWidth: '60px' }}
 					>
-						<Fab color="primary" aria-label="add" onClick={handleSend}>
-							<SendIcon />
+						<Fab color="primary" aria-label="add" onClick={handleSend} disabled={isLoading}>
+							{isLoading ? <CircularProgress size={24} /> : <SendIcon />}
 						</Fab>
 					</Box>
 				</Grid>
