@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Paper } from '@mui/material';
 import Title from '../common/Title';
-import { DataGrid, GridValueFormatterParams } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import { format } from 'date-fns';
 import { useServerResWithConvertedDates } from '../store/useServerResWithConvertedDate';
 
@@ -15,8 +15,7 @@ const columns = [
 		field: 'finishedTime_date',
 		headerName: 'Responsed Time',
 		width: 200,
-		valueFormatter: (params: GridValueFormatterParams) => {
-			const dateValue = params.value as Date;
+		valueFormatter: (dateValue: Date) => {
 			return format(dateValue, 'yyyy-MM-dd HH:mm:ss');
 		},
 	},
