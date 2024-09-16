@@ -1,5 +1,15 @@
 import React from 'react';
-import { List, Divider, IconButton, styled, Drawer as MuiDrawer, DrawerProps, Toolbar } from '@mui/material';
+import {
+	List,
+	Divider,
+	IconButton,
+	styled,
+	Drawer as MuiDrawer,
+	DrawerProps,
+	Toolbar,
+	Box,
+	Typography,
+} from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { AiPageItems, MainListItems, SecondaryListItems } from './SideDrawerListItems';
 
@@ -61,6 +71,11 @@ export default function SideDrawer({ open, drawerwidth, toggleDrawer }: SideDraw
 				<Divider sx={{ my: 1 }} />
 				<SecondaryListItems />
 			</List>
+			<Box sx={{ mt: 'auto', p: 2 }}>
+				<Typography variant="body2" color="textSecondary" align="center">
+					Version: {`1.1.0`}
+				</Typography>
+			</Box>
 		</Drawer>
 	);
 }

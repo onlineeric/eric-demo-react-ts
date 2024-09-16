@@ -32,8 +32,9 @@ export default function DescStatement() {
 					Brabantia Pressure Cooker User Manual PDF
 				</a>
 				{` for the retrieval document.`}
-				<br />
-				<Subtitle>About this Chatbot with RAG</Subtitle>
+			</Typography>
+			<Subtitle>About this Chatbot with RAG</Subtitle>
+			<Typography variant="body2" sx={{ lineHeight: 1.7, whiteSpace: 'nowrap' }}>
 				{`This chatbot designed to provide information exclusively about the "Brabantia Pressure Cooker".`}
 				<br />
 				{`It will not response to any off-topic questions.`}
