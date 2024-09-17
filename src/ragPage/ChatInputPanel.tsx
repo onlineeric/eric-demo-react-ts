@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Fab, Grid, Paper, TextField, CircularProgress } from '@mui/material';
+import { Box, Fab, Grid2 as Grid, Paper, TextField, CircularProgress } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
@@ -85,10 +85,10 @@ export default function ChatInputPanel() {
 			}}
 		>
 			<Grid container>
-				<Grid item xs={11}>
+				<Grid size={11}>
 					<TextField fullWidth multiline rows={4} value={userInput} onChange={(e) => setUserInput(e.target.value)} />
 				</Grid>
-				<Grid item xs={1}>
+				<Grid size={1}>
 					<Box
 						sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', height: '100%', minWidth: '60px' }}
 					>
