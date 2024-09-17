@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
@@ -83,13 +83,13 @@ export default function SignIn() {
 						<Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
 							Sign In
 						</Button>
-						<Grid container>
-							<Grid item xs>
+						<Grid container justifyContent="space-between">
+							<Grid size={'auto'}>
 								<Link href="#" variant="body2">
 									Forgot password?
 								</Link>
 							</Grid>
-							<Grid item>
+							<Grid size={'auto'}>
 								<Link href="#" variant="body2">
 									{"Don't have an account? Sign Up"}
 								</Link>

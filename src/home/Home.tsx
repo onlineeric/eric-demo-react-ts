@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import AppDescPanel from './AppDescPanel';
 import BenchmarkDescPanel from './BenchmarkDescPanel';
 import PromptEngineeringDescPanel from './PromptEngineeringDescPanel';
@@ -10,21 +10,21 @@ export default function Home() {
 	return (
 		<Grid container spacing={3}>
 			{/* App Description Panel */}
-			<Grid item xs={12}>
+			<Grid size={12}>
 				<AppDescPanel />
 			</Grid>
 			{/* Benchmark Description Panel */}
-			<Grid item xs={12}>
+			<Grid size={12}>
 				<BenchmarkDescPanel />
 			</Grid>
 			{/* Prompt Engineering Description Panel */}
-			<Grid item xs={12}>
+			<Grid size={12}>
 				<PromptEngineeringDescPanel />
 			</Grid>
-			<Grid item xs={12}>
+			<Grid size={12}>
 				<RagDescPanel />
 			</Grid>
-			<Grid item xs={12}>
+			<Grid size={12}>
 				<FineTuningDescPanel />
 			</Grid>
 		</Grid>
