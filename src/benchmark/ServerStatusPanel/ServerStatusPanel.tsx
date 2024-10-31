@@ -17,16 +17,19 @@ export default function ServerStatusPanel() {
 	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
+	const [expressApiStatus, setExpressApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus);
 
 	const callAPIs = React.useCallback(async () => {
 		setControllerApiStatus(LOADING_STATUS);
 		setMinimalApiStatus(LOADING_STATUS);
 		setGinApiStatus(LOADING_STATUS);
+		setExpressApiStatus(LOADING_STATUS);
 
 		ControllerBasedApiLib.getStatus().then((res) => setMinimalApiStatus(res.status));
 		MinimalApiLib.getStatus().then((res) => setControllerApiStatus(res.status));
 		GinApiLib.getStatus().then((res) => setGinApiStatus(res.status));
+		// GinApiLib.getStatus().then((res) => setGinApiStatus(res.status));
 	}, []);
 
 	return (
@@ -55,6 +58,9 @@ export default function ServerStatusPanel() {
 				</ServerStatusBox>
 				<ServerStatusBox>
 					<>Gin API server (Golang): {getStatusResult(ginApiStatus)}</>
+				</ServerStatusBox>
+				<ServerStatusBox>
+					<>Express API server (NodeJS): {getStatusResult(expressApiStatus)}</>
 				</ServerStatusBox>
 				<div style={{ marginTop: '10px', marginBottom: '10px' }}>
 					<hr />
