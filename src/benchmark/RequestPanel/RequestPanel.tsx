@@ -12,7 +12,7 @@ export default function RequestPanel() {
 	const [numIterations, setNumIterations] = React.useState(20);
 	const [sendIterations, setSendIterations] = React.useState<{ iterations: number | null }>({ iterations: null });
 	const [minimalApiStatus, controllerApiStatus, ginApiStatus] = useCallAPIs(sendIterations);
-	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus);
+	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus, null); // todo: add expressApiStatus
 
 	return (
 		<Paper

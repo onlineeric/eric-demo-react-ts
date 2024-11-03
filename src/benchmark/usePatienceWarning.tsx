@@ -5,6 +5,7 @@ export function usePatienceWarning(
 	minimalApiStatus: number | null | typeof LOADING_STATUS,
 	controllerApiStatus: number | null | typeof LOADING_STATUS,
 	ginApiStatus: number | null | typeof LOADING_STATUS,
+	expressApiStatus: number | null | typeof LOADING_STATUS,
 ): boolean {
 	const [patienceWarning, setPatienceWarning] = React.useState(false);
 
@@ -15,7 +16,8 @@ export function usePatienceWarning(
 				!patienceWarning &&
 				(minimalApiStatus === LOADING_STATUS ||
 					controllerApiStatus === LOADING_STATUS ||
-					ginApiStatus === LOADING_STATUS)
+					ginApiStatus === LOADING_STATUS ||
+					expressApiStatus === LOADING_STATUS)
 			) {
 				setPatienceWarning(true);
 			}
@@ -24,13 +26,14 @@ export function usePatienceWarning(
 		if (
 			minimalApiStatus !== LOADING_STATUS &&
 			controllerApiStatus !== LOADING_STATUS &&
-			ginApiStatus !== LOADING_STATUS
+			ginApiStatus !== LOADING_STATUS &&
+			expressApiStatus !== LOADING_STATUS
 		) {
 			clearTimeout(timeout);
 			setPatienceWarning(false);
 		}
 		return () => clearTimeout(timeout);
-	}, [patienceWarning, minimalApiStatus, controllerApiStatus, ginApiStatus]);
+	}, [patienceWarning, minimalApiStatus, controllerApiStatus, ginApiStatus, expressApiStatus]);
 
 	return patienceWarning;
 }

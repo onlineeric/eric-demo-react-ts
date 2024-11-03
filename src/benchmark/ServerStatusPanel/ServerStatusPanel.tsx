@@ -6,6 +6,7 @@ import MinimalApiLib from '../../utils/MinimalApiLib';
 import GinApiLib from '../../utils/GinApiLib';
 import { getStatusResult } from './getStatusResult';
 import { usePatienceWarning } from '../usePatienceWarning';
+import ExpressApiService from '../../utils/ExpressApiService';
 
 export const LOADING_STATUS = 'loading';
 
@@ -18,7 +19,7 @@ export default function ServerStatusPanel() {
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [expressApiStatus, setExpressApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
-	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus);
+	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus, expressApiStatus);
 
 	const callAPIs = React.useCallback(async () => {
 		setControllerApiStatus(LOADING_STATUS);
@@ -29,7 +30,7 @@ export default function ServerStatusPanel() {
 		ControllerBasedApiLib.getStatus().then((res) => setMinimalApiStatus(res.status));
 		MinimalApiLib.getStatus().then((res) => setControllerApiStatus(res.status));
 		GinApiLib.getStatus().then((res) => setGinApiStatus(res.status));
-		// GinApiLib.getStatus().then((res) => setGinApiStatus(res.status));
+		ExpressApiService.getStatus().then((res) => setExpressApiStatus(res.status));
 	}, []);
 
 	return (
