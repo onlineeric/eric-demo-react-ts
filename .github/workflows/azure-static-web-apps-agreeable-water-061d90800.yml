@@ -86,4 +86,3 @@ jobs:
             REACT_APP_AUTH_USERNAME_ericminimalapi: ${{ vars.REACT_APP_AUTH_USERNAME_ERICMINIMALAPI }}
             REACT_APP_AUTH_USERNAME_eric_gin_server: ${{ vars.REACT_APP_AUTH_USERNAME_ERIC_GIN_SERVER }}
             REACT_APP_AUTH_USERNAME_eric_express_server: ${{ vars.REACT_APP_AUTH_USERNAME_ERIC_EXPRESS_SERVER }}
-			
