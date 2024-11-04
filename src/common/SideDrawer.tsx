@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { AiPageItems, MainListItems, SecondaryListItems } from './SideDrawerListItems';
+import packageJson from '../../package.json';
 
 interface StyledDrawerProps extends DrawerProps {
 	open: boolean;
@@ -73,7 +74,7 @@ export default function SideDrawer({ open, drawerwidth, toggleDrawer }: SideDraw
 			</List>
 			<Box sx={{ mt: 'auto', p: 2 }}>
 				<Typography variant="body2" color="textSecondary" align="center">
-					Version: {`1.1.0`}
+					Version: {packageJson.version}
 				</Typography>
 			</Box>
 		</Drawer>
