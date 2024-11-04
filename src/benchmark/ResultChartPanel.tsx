@@ -58,7 +58,7 @@ export default function ResultChartPanel() {
 			}}
 		>
 			<Title>Result Chat</Title>
-			<Box sx={{ minWidth: 500, maxWidth: 800 }}>
+			<Box sx={{ minWidth: 500, maxWidth: 1000 }}>
 				{chartData.serverData.length === 0 ? (
 					<div>No data</div>
 				) : (

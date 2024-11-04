@@ -6,6 +6,7 @@ import MinimalApiLib from '../../utils/MinimalApiLib';
 import GinApiLib from '../../utils/GinApiLib';
 import { getStatusResult } from './getStatusResult';
 import { usePatienceWarning } from '../usePatienceWarning';
+import ExpressApiService from '../../utils/ExpressApiService';
 
 export const LOADING_STATUS = 'loading';
 
@@ -17,16 +18,19 @@ export default function ServerStatusPanel() {
 	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
-	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus);
+	const [expressApiStatus, setExpressApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
+	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus, expressApiStatus);
 
 	const callAPIs = React.useCallback(async () => {
 		setControllerApiStatus(LOADING_STATUS);
 		setMinimalApiStatus(LOADING_STATUS);
 		setGinApiStatus(LOADING_STATUS);
+		setExpressApiStatus(LOADING_STATUS);
 
 		ControllerBasedApiLib.getStatus().then((res) => setMinimalApiStatus(res.status));
 		MinimalApiLib.getStatus().then((res) => setControllerApiStatus(res.status));
 		GinApiLib.getStatus().then((res) => setGinApiStatus(res.status));
+		ExpressApiService.getStatus().then((res) => setExpressApiStatus(res.status));
 	}, []);
 
 	return (
@@ -35,7 +39,7 @@ export default function ServerStatusPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 280,
+				height: 320,
 			}}
 		>
 			<Box sx={{ display: 'flex' }}>
@@ -55,6 +59,9 @@ export default function ServerStatusPanel() {
 				</ServerStatusBox>
 				<ServerStatusBox>
 					<>Gin API server (Golang): {getStatusResult(ginApiStatus)}</>
+				</ServerStatusBox>
+				<ServerStatusBox>
+					<>Express API server (NodeJS): {getStatusResult(expressApiStatus)}</>
 				</ServerStatusBox>
 				<div style={{ marginTop: '10px', marginBottom: '10px' }}>
 					<hr />
