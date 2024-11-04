@@ -5,6 +5,7 @@ import GinApiLib from '../../utils/GinApiLib';
 import { useAppDispatch } from '../../store/hooks';
 import { addResponse, clearAllResponses } from '../../store/serverResponsesSlice';
 import { LOADING_STATUS } from './getStatusResult';
+import ExpressApiService from '../../utils/ExpressApiService';
 
 // Custom hook to call APIs
 export const useCallAPIs = (param: { iterations: number | null }) => {
@@ -15,6 +16,7 @@ export const useCallAPIs = (param: { iterations: number | null }) => {
 	const [minimalApiStatus, setMinimalApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [controllerApiStatus, setControllerApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 	const [ginApiStatus, setGinApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
+	const [expressApiStatus, setExpressApiStatus] = React.useState<number | null | typeof LOADING_STATUS>(null);
 
 	const dispatch = useAppDispatch();
 
@@ -31,6 +33,9 @@ export const useCallAPIs = (param: { iterations: number | null }) => {
 			if (ginApiStatus !== null) {
 				setGinApiStatus(null);
 			}
+			if (expressApiStatus !== null) {
+				setExpressApiStatus(null);
+			}
 			return;
 		}
 
@@ -39,6 +44,7 @@ export const useCallAPIs = (param: { iterations: number | null }) => {
 		setControllerApiStatus(LOADING_STATUS);
 		setMinimalApiStatus(LOADING_STATUS);
 		setGinApiStatus(LOADING_STATUS);
+		setExpressApiStatus(LOADING_STATUS);
 
 		// Call ControllerBasedApiLib APIs, add responses to responseState and return status as promise
 		const cbPromise1 = ControllerBasedApiLib.getSha256Benchmark(numIterations).then((res) => {
@@ -84,8 +90,23 @@ export const useCallAPIs = (param: { iterations: number | null }) => {
 			const status = statuses.find((s) => s !== 200) ?? 200;
 			setGinApiStatus(status);
 		});
+
+		// Call ExpressApiLib APIs, add responses to responseState and return status as promise
+		const expressPromise1 = ExpressApiService.getSha256Benchmark(numIterations).then((res) => {
+			dispatch(addResponse(ExpressApiService.convertResToState(res)));
+			return res.status;
+		});
+		const expressPromise2 = ExpressApiService.getMd5Benchmark(numIterations).then((res) => {
+			dispatch(addResponse(ExpressApiService.convertResToState(res)));
+			return res.status;
+		});
+		// Set status after all ExpressApiService APIs are done
+		Promise.all([expressPromise1, expressPromise2]).then((statuses) => {
+			const status = statuses.find((s) => s !== 200) ?? 200;
+			setExpressApiStatus(status);
+		});
 	}, [param]);
 
 	// Return statuses
-	return [minimalApiStatus, controllerApiStatus, ginApiStatus];
+	return [minimalApiStatus, controllerApiStatus, ginApiStatus, expressApiStatus];
 };

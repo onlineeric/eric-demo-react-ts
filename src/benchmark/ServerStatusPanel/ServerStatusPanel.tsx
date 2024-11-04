@@ -39,7 +39,7 @@ export default function ServerStatusPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 280,
+				height: 320,
 			}}
 		>
 			<Box sx={{ display: 'flex' }}>

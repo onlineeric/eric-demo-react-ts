@@ -11,8 +11,8 @@ export default function RequestPanel() {
 	// get env var
 	const [numIterations, setNumIterations] = React.useState(20);
 	const [sendIterations, setSendIterations] = React.useState<{ iterations: number | null }>({ iterations: null });
-	const [minimalApiStatus, controllerApiStatus, ginApiStatus] = useCallAPIs(sendIterations);
-	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus, null); // todo: add expressApiStatus
+	const [minimalApiStatus, controllerApiStatus, ginApiStatus, expressApiStatus] = useCallAPIs(sendIterations);
+	const patienceWarning = usePatienceWarning(minimalApiStatus, controllerApiStatus, ginApiStatus, expressApiStatus); // todo: add expressApiStatus
 
 	return (
 		<Paper
@@ -20,7 +20,7 @@ export default function RequestPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 280,
+				height: 320,
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>
@@ -35,6 +35,7 @@ export default function RequestPanel() {
 				<Box sx={boxSx}>Minimal API server (c#): {getStatusResult(minimalApiStatus)}</Box>
 				<Box sx={boxSx}>Controller based API server (c#): {getStatusResult(controllerApiStatus)}</Box>
 				<Box sx={boxSx}>Gin API server (Golang): {getStatusResult(ginApiStatus)}</Box>
+				<Box sx={boxSx}>Express API server (NodeJS): {getStatusResult(expressApiStatus)}</Box>
 				<div style={{ marginTop: '10px', marginBottom: '10px' }}>
 					<hr />
 				</div>
