@@ -2,16 +2,7 @@
 Welcome! I'm Eric Cheng, this repository is my personal demo project to showcase my full stack and AI development skills.
 
 This UI is a Single Page App (SPA) built using React, TypeScript, and Material-UI.
-The backend connented to my other demo projects, which are built using .Net C#, and GoLang.  
-
-![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat)
-![TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?logo=typescript&logoColor=white&style=flat)
-![Redux](https://img.shields.io/badge/-Redux-764ABC?logo=redux&logoColor=white&style=flat)
-![Material-UI](https://img.shields.io/badge/-Material--UI-0081CB?logo=mui&logoColor=white&style=flat)
-![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)
-![CI/CD](https://img.shields.io/badge/-CI%2FCD-5C6BC0?logo=jenkins&logoColor=white)
-![Azure](https://img.shields.io/badge/-Azure-0089D6?logo=microsoft-azure&logoColor=white)
+The backend connented to my other demo projects, which are built using .Net C#, NodeJs and GoLang.  
 
 ## About this React App
 
@@ -25,6 +16,15 @@ This React App clone from my another project [Eric Recat Template](https://githu
 These packages, along with their peer dependencies, are all included, providing a robust foundation for your React project.
 
 ESLint and Prettier are integrated to ensure consistent code formatting and to help identify potential issues early in the development process.
+
+![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat)
+![TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?logo=typescript&logoColor=white&style=flat)
+![Redux](https://img.shields.io/badge/-Redux-764ABC?logo=redux&logoColor=white&style=flat)
+![Material-UI](https://img.shields.io/badge/-Material--UI-0081CB?logo=mui&logoColor=white&style=flat)
+![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)
+![CI/CD](https://img.shields.io/badge/-CI%2FCD-5C6BC0?logo=jenkins&logoColor=white)
+![Azure](https://img.shields.io/badge/-Azure-0089D6?logo=microsoft-azure&logoColor=white)
 
 ## Demo Site
 
@@ -42,6 +42,6 @@ To use this template, you can either download it directly or clone the repositor
 Once you have the template, follow these steps to get it up and running:
 
 ```bash
-npm install  # Install the necessary dependencies
-npm start    # Start the development server
+yarn install  # Install the necessary dependencies
+yarn start    # Start the development server
 ```
