@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from './store';
-import { dataModelList } from '../utils/storeLib';
+import { defaultDataModel } from '../utils/storeLib';
 import { Assistant } from 'openai/resources/beta/assistants';
 import { Thread } from 'openai/resources/beta/threads/threads';
 
@@ -22,7 +22,7 @@ interface IInitialState {
 // Define the initial state using that type
 const initialState: IInitialState = {
 	messageHistory: [],
-	dataModel: dataModelList.gpt4o_mini,
+	dataModel: defaultDataModel,
 	temperture: 0.6,
 	assistant: null,
 	thread: null,

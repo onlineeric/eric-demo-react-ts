@@ -5,3 +5,5 @@ export const dataModelList = {
 	gpt4o: 'gpt-4o',
 	gpt4o_mini: 'gpt-4o-mini',
 };
+
+export const defaultDataModel = dataModelList.gpt4o_mini;
