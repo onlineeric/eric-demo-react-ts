@@ -76,16 +76,6 @@ jobs:
 
         - name: pnpm Build
           run: pnpm build
-
-        - name: Deploy to Azure Static Web Apps
-          id: builddeploy
-          uses: Azure/static-web-apps-deploy@v1
-          with:
-            azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DELIGHTFUL_WATER_0ECBED000 }}
-            repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
-            action: "upload"
-            skip_app_build: true
-            app_location: "build" # App source code path
           env:
             REACT_APP_AUTH_PASSWORD_ericcontrollerbasedapi: ${{ secrets.REACT_APP_AUTH_PASSWORD_ERICCONTROLLERBASEDAPI }}
             REACT_APP_AUTH_PASSWORD_ericminimalapi: ${{ secrets.REACT_APP_AUTH_PASSWORD_ERICMINIMALAPI }}
@@ -100,3 +90,13 @@ jobs:
             REACT_APP_AUTH_USERNAME_ericminimalapi: ${{ vars.REACT_APP_AUTH_USERNAME_ERICMINIMALAPI }}
             REACT_APP_AUTH_USERNAME_eric_gin_server: ${{ vars.REACT_APP_AUTH_USERNAME_ERIC_GIN_SERVER }}
             REACT_APP_AUTH_USERNAME_eric_express_server: ${{ vars.REACT_APP_AUTH_USERNAME_ERIC_EXPRESS_SERVER }}
+
+        - name: Deploy to Azure Static Web Apps
+          id: builddeploy
+          uses: Azure/static-web-apps-deploy@v1
+          with:
+            azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DELIGHTFUL_WATER_0ECBED000 }}
+            repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+            action: "upload"
+            skip_app_build: true
+            app_location: "build" # App source code path
