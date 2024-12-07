@@ -85,8 +85,7 @@ jobs:
             repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
             action: "upload"
             skip_app_build: true
-            app_location: "/" # App source code path
-            output_location: "build" # Built app content directory - optional
+            app_location: "build" # App source code path
           env:
             REACT_APP_AUTH_PASSWORD_ericcontrollerbasedapi: ${{ secrets.REACT_APP_AUTH_PASSWORD_ERICCONTROLLERBASEDAPI }}
             REACT_APP_AUTH_PASSWORD_ericminimalapi: ${{ secrets.REACT_APP_AUTH_PASSWORD_ERICMINIMALAPI }}
