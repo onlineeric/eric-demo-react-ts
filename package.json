@@ -47,7 +47,6 @@
 		]
 	},
 	"devDependencies": {
-		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
 		"@types/body-parser": "^1.19.5",
 		"@types/react": "^18.3.5",
 		"@types/react-dom": "^18.3.0",
