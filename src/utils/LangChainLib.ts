@@ -1,29 +1,35 @@
-import ExpressGraphQLService from './ExpressGraphQLService';
-
-export interface IChatMessage {
-	role: string;
-	message: string;
-}
+import { ChatOpenAI } from '@langchain/openai';
+import { ChatPromptTemplate } from '@langchain/core/prompts';
+import { StringOutputParser } from '@langchain/core/output_parsers';
 
 // Initialize a chat history array
-const chatHistory: IChatMessage[] = [
-	{ role: 'system', message: 'You are Eric Cheng, a senior full stack developer at a tech company.' },
-	{ role: 'system', message: 'You are demonstrating your AI development skills to potential employers.' },
-	{ role: 'system', message: 'You have solid skills and experience in React js, C# and SQL DB development.' },
-	{
-		role: 'system',
-		message: 'You are very interested in AI development and have been learning about RAG and data models.',
-	},
+const chatHistory: [string, string][] = [
+	['system', 'You are Eric Cheng, a senior full stack developer at a tech company.'],
+	['system', 'You are demonstrating your AI development skills to potential employers.'],
+	['system', 'You have solid skills and experience in React js, C# and SQL DB development.'],
+	['system', 'You are very interested in AI development and have been learning about RAG and data models.'],
 ];
 
-export const getChatResponse = async (userInput: string, dataModel: string, temperature: number): Promise<string> => {
-	chatHistory.push({ role: 'user', message: userInput } as IChatMessage);
+const chain = new StringOutputParser();
 
-	const res = await ExpressGraphQLService.getLangChainResponse(userInput, dataModel, temperature, chatHistory);
-	const chatRes = res.data.data.getLangChainResponse.modelResponse;
+export const getChatResponse = async (userInput: string, dataModel: string, temperature: number): Promise<string> => {
+	chatHistory.push(['user', userInput]);
+
+	const prompt = ChatPromptTemplate.fromMessages(chatHistory);
+
+	const chatModelOpenAI = new ChatOpenAI({
+		apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+		model: dataModel,
+		temperature: temperature,
+	});
+
+	// Link the updated prompt with the ChatOpenAI model
+	const chatRes = await prompt.pipe(chatModelOpenAI).pipe(chain).invoke({
+		input: userInput,
+	});
 
 	// Append the bot's response to the chat history
-	chatHistory.push({ role: 'ai', message: chatRes } as IChatMessage);
+	chatHistory.push(['ai', chatRes]);
 
 	return chatRes;
 };
