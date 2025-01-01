@@ -11,7 +11,7 @@ export default function PromptEngineeringDescPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 210,
+				height: 230,
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>

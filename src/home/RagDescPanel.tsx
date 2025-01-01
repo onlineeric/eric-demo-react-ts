@@ -11,7 +11,7 @@ export default function RagDescPanel() {
 				p: 2,
 				display: 'flex',
 				flexDirection: 'column',
-				height: 160,
+				height: 180,
 			}}
 		>
 			<Box sx={{ overflowX: 'auto' }}>

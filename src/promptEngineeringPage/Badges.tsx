@@ -20,7 +20,11 @@ export default function Badges() {
 			<StyledImg
 				src="https://img.shields.io/badge/-ChatGPT-512BD4?logo=openai&logoColor=white&style=flat"
 				alt="ChatGPT"
-			/>{' '}
+			/>
+			<StyledImg
+				src="https://img.shields.io/badge/-GraphQL-E10098?logo=graphql&logoColor=white&style=flat"
+				alt="GraphQL"
+			/>
 		</Box>
 	);
 }
