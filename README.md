@@ -21,6 +21,7 @@ ESLint and Prettier are integrated to ensure consistent code formatting and to h
 ![TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?logo=typescript&logoColor=white&style=flat)
 ![Redux](https://img.shields.io/badge/-Redux-764ABC?logo=redux&logoColor=white&style=flat)
 ![Material-UI](https://img.shields.io/badge/-Material--UI-0081CB?logo=mui&logoColor=white&style=flat)
+![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?logo=graphql&logoColor=white)
 ![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)
 ![CI/CD](https://img.shields.io/badge/-CI%2FCD-5C6BC0?logo=jenkins&logoColor=white)
