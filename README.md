@@ -43,6 +43,6 @@ To use this template, you can either download it directly or clone the repositor
 Once you have the template, follow these steps to get it up and running:
 
 ```bash
-yarn install  # Install the necessary dependencies
-yarn start    # Start the development server
+npm install --force  # Install the necessary dependencies, force to install the latest version
+npm start    # Start the development server
 ```
